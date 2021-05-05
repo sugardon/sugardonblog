@@ -1,0 +1,32 @@
+---
+# https://docs.github.com/ja/actions/guides/building-and-testing-nodejs
+name: Node.js CI
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Check Helmfile
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+    matrix:
+      node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      # https://docs.github.com/ja/actions/guides/building-and-testing-nodejs#example-using-yarn
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: eslint
+        run: yarn lint
+
+      - name: prettier
+        run: |
+          yarn format
+          git diff --exit-code
