@@ -5,7 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Components from "../components/MDXRemoteComponents"
+import Components from "../components/MDXRemoteComponents";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 

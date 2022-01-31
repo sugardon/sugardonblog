@@ -8,6 +8,6 @@ const h1: React.FC<ComponentProps> = (p: ComponentProps) => {
 };
 
 export const Components = {
-    h1: h1
-}
-export default Components
+  h1: h1,
+};
+export default Components;

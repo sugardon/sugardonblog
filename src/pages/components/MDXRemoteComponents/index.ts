@@ -1,1 +1,1 @@
-export { default } from "./MDXRemoteComponents"
+export { default } from "./MDXRemoteComponents";
