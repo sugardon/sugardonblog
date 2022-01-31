@@ -8,6 +8,23 @@ title: テストのタイトル
 - a
 - c
 
+```ts
+interface CodeProps {
+  children: React.ReactChild;
+  className: string;
+}
+// https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-at-run-time
+const code: React.FC<CodeProps> = (p: CodeProps) => {
+  const match = /language-(\w+)/.exec(p.className || "");
+
+  return match ? (
+    <SyntaxHighlighter language={match[1]}>{p.children}</SyntaxHighlighter>
+  ) : (
+    <SyntaxHighlighter>{p.children}</SyntaxHighlighter>
+  );
+};
 ```
-print(" Hello ")
+
+```console
+$ mv ./foo ../bar
 ```
