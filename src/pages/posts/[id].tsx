@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import Components from "../components/MDXRemoteComponents"
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 
@@ -44,17 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-// style
-interface h1Props {
-  children?: React.ReactChild;
-}
-const h1: React.FC<h1Props> = (p: h1Props) => {
-  return <h1 style={{ color: "red" }}> {p.children} </h1>;
-};
-const components = {
-  h1: (p: h1Props) => h1(p),
-};
-
 // Render post
 interface TestProps {
   frontMatter: { [key: string]: string };
@@ -67,7 +57,7 @@ export const TestPost: React.FC<TestProps> = ({
   return (
     <div>
       <h1> {frontMatter.title} </h1>
-      <MDXRemote {...source} components={components} />
+      <MDXRemote {...source} components={Components} />
     </div>
   );
 };
