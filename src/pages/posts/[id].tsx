@@ -5,7 +5,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Components from "../components/MDXRemoteComponents";
+import Components from "../../components/mdx-remote";
+import Layout from "../../containers/Layout";
+import Container from "../../containers/Container";
+import Title from "../../containers/Posts";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 
@@ -55,10 +58,14 @@ export const TestPost: React.FC<TestProps> = ({
   source,
 }: TestProps) => {
   return (
-    <div>
-      <h1> {frontMatter.title} </h1>
-      <MDXRemote {...source} components={Components} />
-    </div>
+    <Layout>
+      <Container>
+        <Title>{frontMatter.title}</Title>
+        <div>
+          <MDXRemote {...source} components={Components} />
+        </div>
+      </Container>
+    </Layout>
   );
 };
 export default TestPost;

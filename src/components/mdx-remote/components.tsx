@@ -6,7 +6,7 @@ interface ComponentProps {
   children?: React.ReactChild;
 }
 const h1: React.FC<ComponentProps> = (p: ComponentProps) => {
-  return <h1 style={{ color: "red" }}> {p.children} </h1>;
+  return <h1 className="text-3xl font-bold underline"> {p.children} </h1>;
 };
 
 interface CodeProps {
