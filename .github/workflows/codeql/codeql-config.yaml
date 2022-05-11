@@ -1,5 +1,0 @@
-name: "codeql config"
-
-# https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#running-additional-queries
-queries:
-  - uses: security-and-quality
