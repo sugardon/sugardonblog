@@ -27,7 +27,6 @@ jobs:
         # https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/
         language:
           - "typescript"
-          - "javascript"
 
     steps:
       - name: Checkout repository
