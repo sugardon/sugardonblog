@@ -27,7 +27,6 @@ jobs:
         # https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/
         language:
           - "typescript"
-          - "javascript"
 
     steps:
       - name: Checkout repository
@@ -38,7 +37,7 @@ jobs:
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
-          config-file: .github/codeql/codeql-config.yaml
+          config-file: ./.github/codeql/codeql-config.yaml
 
       # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
       # If this step fails, then you should remove it and run the build manually (see below)
