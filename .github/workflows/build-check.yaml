@@ -20,7 +20,7 @@ jobs:
       # TODO: Cache
       # https://docs.github.com/ja/actions/guides/building-and-testing-nodejs#example-caching-dependencies
       - name: setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version-file: ".nvmrc"
       # https://docs.github.com/ja/actions/guides/building-and-testing-nodejs#example-using-yarn
