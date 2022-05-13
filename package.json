@@ -15,12 +15,12 @@
     "next-mdx-remote": "^4.0.3",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-syntax-highlighter": "^15.4.5"
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.35",
     "@types/react": "^18.0.9",
-    "@types/react-syntax-highlighter": "^13.5.2",
+    "@types/react-syntax-highlighter": "^15.5.1",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "autoprefixer": "^10.4.7",
