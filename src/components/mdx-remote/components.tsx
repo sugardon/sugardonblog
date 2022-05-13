@@ -2,19 +2,17 @@ import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-interface ComponentProps {
-  children?: React.ReactChild;
-}
-const h1: React.FC<ComponentProps> = (p: ComponentProps) => {
-  return <h1 className="text-3xl font-bold underline"> {p.children} </h1>;
+// https://github.com/hashicorp/next-mdx-remote/issues/251
+const h1 = ({ children }: { children?: React.ReactNode }) => {
+  return <h1 className="text-3xl font-bold underline"> {children} </h1>;
 };
 
 interface CodeProps {
-  children: React.ReactChild;
-  className: string;
+  children?: React.ReactNode;
+  className?: string | undefined;
 }
 // https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-at-run-time
-const code: React.FC<CodeProps> = (p: CodeProps) => {
+const code = (p: CodeProps) => {
   const match = /language-(\w+)/.exec(p.className || "");
 
   return match ? (
@@ -26,7 +24,7 @@ const code: React.FC<CodeProps> = (p: CodeProps) => {
   );
 };
 
-export const Components = {
+export const Components: import("mdx/types").MDXComponents = {
   h1: h1,
   code: code,
 };
