@@ -14,7 +14,7 @@ interface CodeProps {
 // https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-at-run-time
 const code = (p: CodeProps) => {
   const match = /language-(\w+)/.exec(p.className || "");
-  const str: string = p.children ? p.children.toString() : ""
+  const str: string = p.children ? p.children.toString() : "";
 
   return match ? (
     <SyntaxHighlighter language={match[1]} style={atomOneDark}>
