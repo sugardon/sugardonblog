@@ -26,7 +26,7 @@ const code = (p: CodeProps) => {
 };
 
 export const Components: import("mdx/types").MDXComponents = {
-  h1: h1,
-  code: code,
+  h1,
+  code,
 };
 export default Components;
