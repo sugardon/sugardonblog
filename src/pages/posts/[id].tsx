@@ -6,6 +6,7 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Components from "../../components/mdx-remote";
+import Header from "../../components/head-nav";
 import Layout from "../../containers/Layout";
 import Container from "../../containers/Container";
 import Title from "../../containers/Posts";
@@ -60,6 +61,7 @@ export const TestPost: React.FC<TestProps> = ({
   return (
     <Layout>
       <Container>
+        <Header />
         <Title>{frontMatter.title}</Title>
         <div>
           <MDXRemote {...source} components={Components} />
