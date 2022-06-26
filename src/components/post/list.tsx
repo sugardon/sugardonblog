@@ -1,7 +1,6 @@
 import React from "react";
 // TODO: get contents from post
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Post } from "../../types/post";
+// import { Post } from "../../types/post";
 
 const Content = () => {
   return (
