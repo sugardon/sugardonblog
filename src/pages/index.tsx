@@ -4,7 +4,7 @@ import Link from "next/link";
 import Container from "../containers/Container";
 import Header from "../components/head-nav";
 import Layout from "../containers/Layout";
-import {PostList} from "../components/post";
+import { PostList } from "../components/post";
 
 export const Index: React.FC = () => {
   return (

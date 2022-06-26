@@ -4,7 +4,7 @@ import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
 import Components from "../../components/mdx-remote";
 import Header from "../../components/head-nav";
 import Layout from "../../containers/Layout";
