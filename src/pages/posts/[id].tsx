@@ -34,17 +34,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 interface PostMeta {
-  title: string
+  title: string;
   all: { [key: string]: string };
 }
 const toPostMeta = (frontMatter: { [key: string]: string }) => {
   const postMeta: PostMeta = {
     title: frontMatter.title || "",
-    all: frontMatter
-  }
-  return postMeta
-}
-
+    all: frontMatter,
+  };
+  return postMeta;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -61,8 +60,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   };
 };
-
-
 
 // Render post
 interface TestProps {
