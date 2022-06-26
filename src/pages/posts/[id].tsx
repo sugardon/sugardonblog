@@ -10,6 +10,7 @@ import Header from "../../components/head-nav";
 import Layout from "../../containers/Layout";
 import Container from "../../containers/Container";
 import Title from "../../containers/Posts";
+import { Post, PostMeta } from "../../types/post";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 
@@ -33,10 +34,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface PostMeta {
-  title: string;
-  all: { [key: string]: string };
-}
 const toPostMeta = (frontMatter: { [key: string]: string }) => {
   const postMeta: PostMeta = {
     title: frontMatter.title || "",
@@ -55,21 +52,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content, { scope: data });
   return {
     props: {
+      name: postFilePath.replace(/\.mdx?$/, ""),
       postMeta: toPostMeta(data),
       source: mdxSource,
     },
   };
 };
 
-// Render post
-interface TestProps {
-  postMeta: PostMeta;
-  source: MDXRemoteSerializeResult;
-}
-export const TestPost: React.FC<TestProps> = ({
-  postMeta,
-  source,
-}: TestProps) => {
+export const TestPost: React.FC<Post> = ({ postMeta, source }: Post) => {
   return (
     <Layout>
       <Container>
