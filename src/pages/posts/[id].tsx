@@ -33,6 +33,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+interface PostMeta {
+  title: string
+  all: { [key: string]: string };
+}
+const toPostMeta = (frontMatter: { [key: string]: string }) => {
+  const postMeta: PostMeta = {
+    title: frontMatter.title || "",
+    all: frontMatter
+  }
+  return postMeta
+}
+
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postFilePath = "posts/test.mdx";
@@ -43,26 +56,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content, { scope: data });
   return {
     props: {
+      postMeta: toPostMeta(data),
       source: mdxSource,
-      frontMatter: data,
     },
   };
 };
 
+
+
 // Render post
 interface TestProps {
-  frontMatter: { [key: string]: string };
+  postMeta: PostMeta;
   source: MDXRemoteSerializeResult;
 }
 export const TestPost: React.FC<TestProps> = ({
-  frontMatter,
+  postMeta,
   source,
 }: TestProps) => {
   return (
     <Layout>
       <Container>
         <Header />
-        <Title>{frontMatter.title}</Title>
+        <Title>{postMeta.title}</Title>
         <div>
           <MDXRemote {...source} components={Components} />
         </div>
