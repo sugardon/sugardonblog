@@ -9,7 +9,7 @@ import Layout from "../../containers/Layout";
 import Container from "../../containers/Container";
 import Title from "../../containers/Posts";
 import { Post } from "../../types/post";
-import {GetPost} from "../../utils/post";
+import { GetPost } from "../../utils/post";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 
