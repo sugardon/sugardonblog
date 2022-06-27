@@ -1,11 +1,15 @@
 import * as fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { Post, PostMeta } from "../types/post";
+import { getMDXPathsRecursively } from "./file";
 
 const toPostMeta = (frontMatter: { [key: string]: string }) => {
   const postMeta: PostMeta = {
-    title: frontMatter.title || "",
+    title: frontMatter.title || "No Title",
+    description: frontMatter.description || "No Description",
+    date: frontMatter.date || "1900-01-01",
     all: frontMatter,
   };
   return postMeta;
@@ -26,9 +30,10 @@ export const GetPost = async (path: string) => {
 };
 
 export const GetAllPosts = async () => {
-  // TODO: get all path
-  const paths: string[] = ["posts/test.mdx"];
-
+  const paths: string[] = getMDXPathsRecursively(
+    path.join(process.cwd(), "posts"),
+    []
+  );
   const posts: Post[] = await Promise.all(paths.map((p) => GetPost(p)));
   return posts;
 };
