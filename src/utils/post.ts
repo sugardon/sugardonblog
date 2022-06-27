@@ -7,7 +7,8 @@ import { getMDXPathsRecursively } from "./file";
 
 const toPostMeta = (frontMatter: { [key: string]: string }) => {
   const postMeta: PostMeta = {
-    title: frontMatter.title || "",
+    title: frontMatter.title || "No Title",
+    description: frontMatter.description || "No Description",
     all: frontMatter,
   };
   return postMeta;
