@@ -6,7 +6,7 @@ interface Props {
 
 // https://tailwindcss.com/docs/container
 const Container: React.FC<Props> = ({ children }: Props) => {
-  return <div className="container px-5 mx-auto">{children}</div>;
+  return <div className="container mx-auto px-5 py-24">{children}</div>;
 };
 
 export default Container;
