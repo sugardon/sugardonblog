@@ -22,7 +22,7 @@ export const GetPost = async (path: string) => {
   const { content, data } = matter(source);
   const mdxSource = await serialize(content, { scope: data });
   const post: Post = {
-    name: path.replace(/\.mdx?$/, ""),
+    path: path.replace(/\.mdx?$/, ""),
     postMeta: toPostMeta(data),
     source: mdxSource,
   };

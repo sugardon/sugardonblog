@@ -1,7 +1,16 @@
+import Link from "next/link";
 import React from "react";
 import { Post } from "../../types/post";
 
 const Content: React.FC<{ post: Post }> = (props) => {
+  const pathList = props.post.path.split("/");
+  const params = {
+    year: pathList.slice(-4)[0],
+    month: pathList.slice(-3)[0],
+    day: pathList.slice(-2)[0],
+    name: pathList.slice(-1)[0],
+  };
+
   return (
     <div className="-my-8 divide-y-2 divide-gray-100">
       <div className="flex flex-wrap py-8 md:flex-nowrap">
@@ -13,10 +22,17 @@ const Content: React.FC<{ post: Post }> = (props) => {
         </div>
         <div className="md:flex-grow">
           <h2 className="mb-2 text-2xl font-medium text-gray-900 title-font">
-            {props.post.postMeta.title}
+            <Link
+              href={`/posts/${params.year}/${params.month}/${params.day}/${params.name}`}
+            >
+              {props.post.postMeta.title}
+            </Link>
           </h2>
           <p className="leading-relaxed">{props.post.postMeta.description}</p>
-          <a className="inline-flex items-center mt-4 text-indigo-500">
+          <a
+            href={`/posts/${params.year}/${params.month}/${params.day}/${params.name}`}
+            className="inline-flex items-center mt-4 text-indigo-500"
+          >
             Learn More
             <svg
               className="w-4 h-4 ml-2"
