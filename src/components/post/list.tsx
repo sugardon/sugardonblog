@@ -7,9 +7,9 @@ const Content: React.FC<{ post: Post }> = (props) => {
       <div className="flex flex-wrap py-8 md:flex-nowrap">
         <div className="flex flex-col flex-shrink-0 mb-6 md:w-64 md:mb-0">
           <span className="font-semibold text-gray-700 title-font">
-            CATEGORY
+            {new Date(props.post.postMeta.date).toLocaleDateString()}
           </span>
-          <span className="mt-1 text-sm text-gray-500">12 Jun 2019</span>
+          <span className="mt-1 text-sm text-gray-500">{"TODO: Tags"}</span>
         </div>
         <div className="md:flex-grow">
           <h2 className="mb-2 text-2xl font-medium text-gray-900 title-font">

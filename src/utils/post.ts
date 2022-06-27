@@ -9,6 +9,7 @@ const toPostMeta = (frontMatter: { [key: string]: string }) => {
   const postMeta: PostMeta = {
     title: frontMatter.title || "No Title",
     description: frontMatter.description || "No Description",
+    date: frontMatter.date || "1900-01-01",
     all: frontMatter,
   };
   return postMeta;
