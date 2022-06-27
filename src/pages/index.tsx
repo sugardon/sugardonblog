@@ -34,7 +34,7 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
         <Header />
         <div>Index page</div>
         <Link href={`/posts/test`}>test</Link>
-        <PostList />
+        <PostList posts={props.allPosts} />
       </Container>
     </Layout>
   );

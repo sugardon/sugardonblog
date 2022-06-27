@@ -1,10 +1,9 @@
 import React from "react";
-// TODO: get contents from post
-// import { Post } from "../../types/post";
+import { Post } from "../../types/post";
 
-const Content = () => {
+const Content: React.FC<{ post: Post; key: number }> = (props) => {
   return (
-    <div className="-my-8 divide-y-2 divide-gray-100">
+    <div className="-my-8 divide-y-2 divide-gray-100" key={props.key}>
       <div className="flex flex-wrap py-8 md:flex-nowrap">
         <div className="flex flex-col flex-shrink-0 mb-6 md:w-64 md:mb-0">
           <span className="font-semibold text-gray-700 title-font">
@@ -14,7 +13,7 @@ const Content = () => {
         </div>
         <div className="md:flex-grow">
           <h2 className="mb-2 text-2xl font-medium text-gray-900 title-font">
-            Bitters hashtag waistcoat fashion axe chia unicorn
+            {props.post.postMeta.title}
           </h2>
           <p className="leading-relaxed">
             Glossier echo park pug, church-key sartorial biodiesel vexillologist
@@ -44,11 +43,13 @@ const Content = () => {
 };
 
 // https://tailblocks.cc/
-export const List: React.FC = () => {
+export const List: React.FC<{ posts: Post[] }> = (props) => {
   return (
     <section className="overflow-hidden text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
-        <Content />
+        {props.posts.map((p, i) => {
+          return <Content post={p} key={i} />;
+        })}
       </div>
     </section>
   );
