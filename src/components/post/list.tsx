@@ -10,21 +10,19 @@ const Content: React.FC<{ post: Post }> = (props) => {
     day: pathList.slice(-2)[0],
     name: pathList.slice(-1)[0],
   };
-  const link = `./posts/${params.year}/${params.month}/${params.day}/${params.name}`
+  const link = `./posts/${params.year}/${params.month}/${params.day}/${params.name}`;
 
   return (
     <div className="flex flex-wrap py-8 md:flex-nowrap">
-      <div className="flex flex-col flex-shrink-0 mb-6 md:mb-0 md:w-64">
-        <span className="font-semibold text-gray-700 title-font">
+      <div className="mb-6 flex flex-shrink-0 flex-col md:mb-0 md:w-64">
+        <span className="title-font font-semibold text-gray-700">
           {new Date(props.post.postMeta.date).toLocaleDateString()}
         </span>
         <span className="mt-1 text-sm text-gray-500">{"TODO: Tags"}</span>
       </div>
       <div className="md:flex-grow">
-        <h2 className="mb-2 text-2xl font-medium text-gray-900 title-font">
-          <Link
-            href={link}
-          >
+        <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
+          <Link href={link}>
             <a className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
               {props.post.postMeta.title}
             </a>

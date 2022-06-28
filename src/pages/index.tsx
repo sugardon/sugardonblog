@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { GetStaticProps } from "next";
 import Container from "../containers/Container";
 import Header from "../components/head-nav";
