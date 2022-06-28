@@ -7,7 +7,7 @@ import { Layout, Main } from "../components/layout";
 import { PostList } from "../components/post";
 import { GetAllPosts } from "../utils/post";
 import { Post } from "../types/post";
-import Hero from "../components/hero/hero";
+import Hero from "../components/hero";
 
 interface indexProps {
   allPosts: Post[];
