@@ -32,9 +32,6 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
 
       <Container>
         <Header />
-        <div>
-          <h1>Index page</h1>
-        </div>
         <PostList posts={props.allPosts} />
       </Container>
     </Layout>
