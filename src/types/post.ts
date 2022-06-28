@@ -8,7 +8,7 @@ export interface PostMeta {
 }
 
 export interface Post {
-  name: string;
+  path: string;
   postMeta: PostMeta;
   source: MDXRemoteSerializeResult;
 }

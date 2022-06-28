@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { GetStaticProps } from "next";
 import Container from "../containers/Container";
 import Header from "../components/head-nav";
@@ -32,8 +31,6 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
 
       <Container>
         <Header />
-        <div>Index page</div>
-        <Link href={`/posts/test`}>test</Link>
         <PostList posts={props.allPosts} />
       </Container>
     </Layout>
