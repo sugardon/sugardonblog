@@ -2,11 +2,12 @@ import React from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import Container from "../containers/Container";
-import Header from "../components/head-nav";
-import Layout from "../containers/Layout";
+import Nav from "../components/header";
+import { Layout, Main } from "../components/layout";
 import { PostList } from "../components/post";
 import { GetAllPosts } from "../utils/post";
 import { Post } from "../types/post";
+import Hero from "../components/hero/hero";
 
 interface indexProps {
   allPosts: Post[];
@@ -29,10 +30,16 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container>
-        <Header />
-        <PostList posts={props.allPosts} />
-      </Container>
+      <Nav />
+
+      <Main>
+        <Container>
+          <Hero />
+        </Container>
+        <Container>
+          <PostList posts={props.allPosts} />
+        </Container>
+      </Main>
     </Layout>
   );
 };

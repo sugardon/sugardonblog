@@ -3,11 +3,11 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { GetAllPosts, GetPost } from "../../../../../utils/post";
 import { Post } from "../../../../../types/post";
-import Layout from "../../../../../containers/Layout";
-import Header from "../../../../../components/head-nav/header";
+import { Layout, Main } from "../../../../../components/layout";
 import Title from "../../../../../containers/Posts/Title";
 import Components from "../../../../../components/mdx-remote";
 import Container from "../../../../../containers/Container";
+import Nav from "../../../../../components/header";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await GetAllPosts();
@@ -52,13 +52,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const Name: React.FC<Post> = ({ postMeta, source }: Post) => {
   return (
     <Layout>
-      <Container>
-        <Header />
-        <Title>{postMeta.title}</Title>
-        <div>
-          <MDXRemote {...source} components={Components} />
-        </div>
-      </Container>
+      <Nav />
+      <Main>
+        <Container>
+          <Title>{postMeta.title}</Title>
+          <div>
+            <MDXRemote {...source} components={Components} />
+          </div>
+        </Container>
+      </Main>
     </Layout>
   );
 };

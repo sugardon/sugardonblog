@@ -10,7 +10,7 @@ const Layout: React.FC<Props> = ({ preview, children }: Props) => {
     <>
       <div className="min-h-screen">
         {preview && "preview"}
-        <main>{children}</main>
+        {children}
       </div>
     </>
   );
