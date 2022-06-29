@@ -8,7 +8,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ preview, children }: Props) => {
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
         {preview && "preview"}
         {children}
       </div>
