@@ -14,7 +14,7 @@ const Content: React.FC<{ post: Post }> = (props) => {
 
   return (
     <div className="flex flex-wrap py-8 md:flex-nowrap">
-      <div className="mb-6 flex flex-shrink-0 flex-col md:mb-0 md:w-64">
+      <div className="mb-6 mr-20 flex flex-shrink-0 flex-col">
         <span className="title-font font-semibold text-gray-700">
           {new Date(props.post.postMeta.date).toLocaleDateString()}
         </span>
