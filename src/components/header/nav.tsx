@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DarkSwitcher } from "../../containers/switcher";
 
 const Nav = () => {
+  // https://flowbite.com/docs/components/navbar/
   return (
     <nav className="sticky top-0 w-full bg-gray-50 shadow-sm dark:bg-gray-900">
       <div className="container mx-auto flex flex-wrap items-center justify-between px-5 py-4 md:py-6">
