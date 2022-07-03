@@ -1,10 +1,25 @@
+import Link from "next/link";
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
+const getAnchor = (text: string): string => {
+  const encoded = encodeURI(text);
+  return encoded;
+};
 // https://github.com/hashicorp/next-mdx-remote/issues/251
 const h1 = ({ children }: { children?: React.ReactNode }) => {
-  return <h1 className="text-3xl font-bold underline"> {children} </h1>;
+  const anchor = typeof children === "string" ? getAnchor(children) : "";
+  return (
+    <>
+      <h1 className="mt-2 mb-2 text-3xl font-bold" id={anchor}>
+        <Link href={`#${anchor}`}>
+          <a>{children}</a>
+        </Link>
+      </h1>
+      <hr className="mb-5" />
+    </>
+  );
 };
 
 interface CodeProps {
