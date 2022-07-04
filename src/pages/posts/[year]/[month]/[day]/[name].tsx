@@ -55,8 +55,10 @@ export const Name: React.FC<Post> = ({ postMeta, source }: Post) => {
       <Nav />
       <Main>
         <Container>
-          <Title>{postMeta.title}</Title>
-          <div>
+          <div className="xl:px-20">
+            <Title>{postMeta.title}</Title>
+          </div>
+          <div className="space-y-5 text-xl xl:px-20">
             <MDXRemote {...source} components={Components} />
           </div>
         </Container>
