@@ -27,3 +27,4 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
    # You can delete
    # $ skaffold delete
    ```
+1. Open http://localhost:8080
