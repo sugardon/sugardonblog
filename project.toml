@@ -1,0 +1,12 @@
+[project]
+id = "com.sugardon.sugardonblog"
+name = "sugardonblog"
+version = "0.0.1"
+
+[[build.env]]
+name = "NODE_ENV"
+value = "production"
+
+[[build.env]]
+name = "BP_NODE_RUN_SCRIPTS"
+value = "lint,build"

@@ -1,0 +1,23 @@
+---
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: sugardonblog
+build:
+  artifacts:
+    - image: sugardonblog
+      context: .
+      buildpacks:
+        builder: "paketobuildpacks/builder:0.3.15-base"
+deploy:
+  helm:
+    releases:
+      - name: nextjs-sugardonblog
+        repo: "https://helm.sugardon.com"
+        remoteChart: "nextjs"
+        version: 0.0.1
+        #https://skaffold.dev/docs/pipeline-stages/deployers/helm/#helm-strategy-split-repository-and-tag
+        artifactOverrides:
+          image: sugardonblog
+        imageStrategy:
+          helm: {}
