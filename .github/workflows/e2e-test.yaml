@@ -26,7 +26,7 @@ jobs:
           ./.devcontainer/setup.sh
       - name: skaffold production
         run: |
-          skaffold run
+          skaffold run --status-check=true
       - name: test
         # TODO: Update test to use e2e framework
         run: |
