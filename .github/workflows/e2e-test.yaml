@@ -1,0 +1,34 @@
+---
+name: e2e test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  e2e-test:
+    name: e2e test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: start minikube
+        uses: medyagh/setup-minikube@master
+        with:
+          kubernetes-version: v1.21.5
+      - name: setup
+        run: |
+          ./.devcontainer/setup.sh
+      - name: skaffold production
+        run: |
+          skaffold run
+      - name: test
+        # TODO: Update test to use e2e framework
+        run: |
+          kubectl expose service nextjs-sugardonblog --type=NodePort --port=8080 --name=nextjs-sugardonblog-test
+          curl $(minikube service nextjs-sugardonblog-test --url=true) -i
