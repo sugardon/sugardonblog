@@ -31,4 +31,4 @@ jobs:
         # TODO: Update test to use e2e framework
         run: |
           kubectl expose service nextjs-sugardonblog --type=NodePort --port=8080 --name=nextjs-sugardonblog-test
-          curl --retry=10 $(minikube service nextjs-sugardonblog-test --url=true) -i
+          curl --retry 10 $(minikube service nextjs-sugardonblog-test --url=true) -i
