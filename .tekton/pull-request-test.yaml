@@ -12,7 +12,7 @@ metadata:
 spec:
   params:
     - name: greet
-      value: "Hello from PipelineRun"
+      value: "Hello from Sugardonblog"
   pipelineRef:
     name: hello-world
   serviceAccountName: build-bot
