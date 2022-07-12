@@ -12,6 +12,8 @@ metadata:
     pipelinesascode.tekton.dev/task: "[git-clone]"
     pipelinesascode.tekton.dev/max-keep-runs: "2"
 spec:
+  # https://github.com/sugardon-org/tekton-cicd/blob/7e44a44495c1c72bfec6ccdc9e8a4a8e26e921e7/rbac/base/build-bot.yaml
+  serviceAccountName: build-bot
   workspaces:
     - name: source
       volumeClaimTemplate:
@@ -23,21 +25,24 @@ spec:
               storage: 3Gi
           storageClassName: tekton-dev-sc
   params:
-    - name: repo_url
+    - name: repo-url
       value: "{{repo_url}}"
     - name: revision
       value: "{{revision}}"
+    - name: buildpack-builder
+      value: "paketobuildpacks/builder:0.3.15-base"
   pipelineSpec:
     workspaces:
       - name: source
     params:
-      - name: repo_url
+      - name: repo-url
       - name: revision
+      - name: buildpack-builder
     tasks:
       - name: git-clone
         params:
           - name: url
-            value: $(params.repo_url)
+            value: $(params.repo-url)
           - name: revision
             value: $(params.revision)
         taskRef:
@@ -46,25 +51,17 @@ spec:
           - name: output
             workspace: source
       - name: build
-        runAfter: [git-clone]
+        runAfter:
+          - git-clone
+        taskRef:
+          name: buildpacks
+        workspaces:
+          - name: source
+            workspace: source
+          #- name: cache
+          #workspace: chache-ws
         params:
-          - name: shp-source-url
-            value: $(params.repo_url)
-          - name: shp-source-revision
-            value: $(params.revision)
-          - name: shp-output-url
-            value: "docker.io/sugardon/sugardonblog"
-        taskSpec:
-          apiVersion: shipwright.io/v1alpha1
-          kind: Build
-          spec:
-            source:
-              url: $(params.shp-source-url)
-              revision: $(params.shp-source-revision)
-            strategy:
-              name: buildpacks-v3
-              kind: ClusterBuildStrategy
-            output:
-              image: $(params.shp-output-url):$(params.shp-source-revision)
-              credentials:
-                name: sugardon-dockerhub-secret
+          - name: APP_IMAGE
+            value: $(params.repo-url):$(params.revision)
+          - name: BUILDER_IMAGE
+            value: $(params.buildpack-builder)
