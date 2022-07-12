@@ -29,6 +29,8 @@ spec:
       value: "{{repo_url}}"
     - name: revision
       value: "{{revision}}"
+    - name: image-url
+      value: "docker.io/sugardon/sugardonblog"
     - name: buildpack-builder
       value: "paketobuildpacks/builder:0.3.15-base"
   pipelineSpec:
@@ -37,6 +39,7 @@ spec:
     params:
       - name: repo-url
       - name: revision
+      - name: image-url
       - name: buildpack-builder
     tasks:
       - name: git-clone
@@ -62,6 +65,6 @@ spec:
           #workspace: chache-ws
         params:
           - name: APP_IMAGE
-            value: $(params.repo-url):$(params.revision)
+            value: $(params.image-url):$(params.revision)
           - name: BUILDER_IMAGE
             value: $(params.buildpack-builder)
