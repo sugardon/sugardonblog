@@ -68,3 +68,9 @@ spec:
             value: $(params.image-url):$(params.revision)
           - name: BUILDER_IMAGE
             value: $(params.buildpack-builder)
+            # project.toml is not work
+            # https://github.com/buildpacks/tekton-integration/issues/33
+          - name: ENV_VARS
+            value:
+              - "NODE_ENV=production"
+              - "BP_NODE_RUN_SCRIPTS=lint,build"
