@@ -6,8 +6,7 @@ metadata:
   name: sugardonblog-build
   namespace: tekton-cicd
   annotations:
-    pipelinesascode.tekton.dev/on-event: "[pull_request]"
-    # pipelinesascode.tekton.dev/on-event: "[push]"
+    pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/task: "[git-clone, buildpacks]"
     pipelinesascode.tekton.dev/max-keep-runs: "2"
