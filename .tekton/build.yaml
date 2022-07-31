@@ -1,0 +1,75 @@
+---
+# https://github.com/adambkaplan/devsecops-shipwright-tekton
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: sugardonblog-build
+  namespace: tekton-cicd
+  annotations:
+    pipelinesascode.tekton.dev/on-event: "[push]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
+    pipelinesascode.tekton.dev/task: "[git-clone, buildpacks]"
+    pipelinesascode.tekton.dev/max-keep-runs: "2"
+spec:
+  # https://github.com/sugardon-org/tekton-cicd/blob/7e44a44495c1c72bfec6ccdc9e8a4a8e26e921e7/rbac/base/build-bot.yaml
+  serviceAccountName: build-bot
+  workspaces:
+    - name: source
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 3Gi
+          storageClassName: tekton-dev-sc
+  params:
+    - name: repo-url
+      value: "{{repo_url}}"
+    - name: revision
+      value: "{{revision}}"
+    - name: image-url
+      value: "docker.io/sugardon/sugardonblog"
+    - name: buildpack-builder
+      value: "paketobuildpacks/builder:0.3.15-base"
+  pipelineSpec:
+    workspaces:
+      - name: source
+    params:
+      - name: repo-url
+      - name: revision
+      - name: image-url
+      - name: buildpack-builder
+    tasks:
+      - name: git-clone
+        params:
+          - name: url
+            value: $(params.repo-url)
+          - name: revision
+            value: $(params.revision)
+        taskRef:
+          name: git-clone
+        workspaces:
+          - name: output
+            workspace: source
+      - name: build
+        runAfter:
+          - git-clone
+        taskRef:
+          name: buildpacks
+        workspaces:
+          - name: source
+            workspace: source
+          #- name: cache
+          #workspace: chache-ws
+        params:
+          - name: APP_IMAGE
+            value: $(params.image-url):$(params.revision)
+          - name: BUILDER_IMAGE
+            value: $(params.buildpack-builder)
+            # project.toml is not work
+            # https://github.com/buildpacks/tekton-integration/issues/33
+          - name: ENV_VARS
+            value:
+              - "NODE_ENV=production"
+              - "BP_NODE_RUN_SCRIPTS=lint,build"
