@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.47",
-    "@types/react": "^18.0.15",
+    "@types/react": "^18.0.16",
     "@types/react-syntax-highlighter": "^15.5.4",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
