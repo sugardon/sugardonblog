@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { Mermaid } from "./mermaid";
 
 const getAnchor = (text: string): string => {
   const encoded = encodeURI(text);
@@ -81,15 +82,21 @@ interface CodeProps {
 // https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-at-run-time
 const code = (p: CodeProps) => {
   const match = /language-(\w+)/.exec(p.className || "");
+  const language = match ? match[1] : undefined;
   const str: string = p.children ? p.children.toString() : "";
 
-  return match ? (
-    <SyntaxHighlighter language={match[1]} style={atomOneDark}>
-      {str}
-    </SyntaxHighlighter>
-  ) : (
-    <SyntaxHighlighter style={atomOneDark}>{str}</SyntaxHighlighter>
-  );
+  switch (language) {
+    case "mermaid":
+      return <Mermaid>{str}</Mermaid>;
+    case undefined:
+      return <SyntaxHighlighter style={atomOneDark}>{str}</SyntaxHighlighter>;
+    default:
+      return (
+        <SyntaxHighlighter language={language} style={atomOneDark}>
+          {str}
+        </SyntaxHighlighter>
+      );
+  }
 };
 
 // https://mdxjs.com/table-of-components/

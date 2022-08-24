@@ -13,7 +13,7 @@ date: "2022-05-05"
 - リスト
 - リスト
 - コードありリスト
-  ```console
+  ```shell
   $ ls
   ```
 - コードありリスト終わり
@@ -42,8 +42,15 @@ const code: React.FC<CodeProps> = (p: CodeProps) => {
 };
 ```
 
-```console
+```shell
 $ mv ./foo ../bar
+```
+
+```mermaid
+graph LR
+      A --- B
+      B-->C[fa:fa-ban forbidden]
+      B-->D(fa:fa-spinner);
 ```
 
 ## 参考資料
