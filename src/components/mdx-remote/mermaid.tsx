@@ -1,22 +1,28 @@
 import mermaid from "mermaid";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 // https://github.com/vercel/next.js/discussions/12837
 export const Mermaid: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
-  const [hydrated, setHydrated] = React.useState(false);
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
+  const elmRef = useRef<HTMLDivElement>(null);
 
-  if (hydrated) {
+  useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,
     });
+    const elm = elmRef.current;
+    if (!elm) return;
+    elm.innerHTML =
+      typeof children === "string"
+        ? [`<div class="mermaid">`, children, `</div>`].join("")
+        : "";
     mermaid.init(".mermaid");
-  }
+  }, [children]);
 
-  // TODO: fix hydration error
-  return <div className="mermaid">{children}</div>;
+  return (
+    <div>
+      <div ref={elmRef} />
+    </div>
+  );
 };
