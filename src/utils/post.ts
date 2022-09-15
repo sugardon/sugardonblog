@@ -10,6 +10,7 @@ const toPostMeta = (frontMatter: { [key: string]: string }) => {
     title: frontMatter.title || "No Title",
     description: frontMatter.description || "No Description",
     date: frontMatter.date || "1900-01-01",
+    draft: ["True", "true"].includes(frontMatter.draft),
     all: frontMatter,
   };
   return postMeta;

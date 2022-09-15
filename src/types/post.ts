@@ -4,6 +4,7 @@ export interface PostMeta {
   title: string;
   description: string;
   date: string;
+  draft: boolean;
   all: { [key: string]: string };
 }
 
