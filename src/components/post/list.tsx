@@ -44,7 +44,7 @@ export const List: React.FC<PostListProps> = (props) => {
     ? props.posts
     : props.posts.filter((p) => !p.postMeta.draft);
   return (
-    <div className="-my-8 divide-y-2 divide-gray-100">
+    <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
       {posts.map((p, i) => {
         return (
           <div key={i}>
