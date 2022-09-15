@@ -34,11 +34,18 @@ const Content: React.FC<{ post: Post }> = (props) => {
   );
 };
 
+interface PostListProps {
+  posts: Post[];
+  showDraft?: boolean;
+}
 // https://tailblocks.cc/
-export const List: React.FC<{ posts: Post[] }> = (props) => {
+export const List: React.FC<PostListProps> = (props) => {
+  const posts = props.showDraft
+    ? props.posts
+    : props.posts.filter((p) => !p.postMeta.draft);
   return (
     <div className="-my-8 divide-y-2 divide-gray-100">
-      {props.posts.map((p, i) => {
+      {posts.map((p, i) => {
         return (
           <div key={i}>
             <Content post={p} />
