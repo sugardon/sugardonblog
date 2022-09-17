@@ -20,7 +20,7 @@
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.58",
+    "@types/node": "^16.11.59",
     "@types/react": "^18.0.20",
     "@types/react-syntax-highlighter": "^15.5.5",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
