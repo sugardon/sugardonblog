@@ -20,7 +20,7 @@ jobs:
       - name: start minikube
         uses: medyagh/setup-minikube@master
         with:
-          kubernetes-version: v1.21.5
+          kubernetes-version: v1.23.7
       - name: setup
         run: |
           ./.devcontainer/setup.sh

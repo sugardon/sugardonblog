@@ -24,7 +24,7 @@
   "features": {
     "docker-in-docker": "latest",
     "kubectl-helm-minikube": {
-      "version": "1.21.2",
+      "version": "1.23.7",
       "helm": "latest",
       "minikube": "latest"
     },
