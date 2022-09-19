@@ -19,6 +19,10 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 ### skaffold
 
+1. Setup Kubernetes
+   ```bash
+   minikube start --kubernstes-version=v1.23.7
+   ```
 1. Run in Kuberntes
    ```bash
    skaffold dev --port-forward --tail=true
