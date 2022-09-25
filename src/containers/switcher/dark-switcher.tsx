@@ -7,6 +7,7 @@ const DarkSwitcher = () => {
   useEffect(() => setLoaded(true), []);
   return (
     <button
+      className="flex items-center px-3 py-2"
       id="theme-toggle"
       type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
