@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { DarkSwitcher } from "../../containers/switcher";
 
-const HamburgerIcon: React.FC<{onClick: () => void}> = ({ onClick }) => {
+const HamburgerIcon: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <button className="flex items-center px-3 py-2" onClick={onClick}>
       <svg
@@ -23,7 +23,7 @@ const HamburgerIcon: React.FC<{onClick: () => void}> = ({ onClick }) => {
   );
 };
 
-const CrossIcon: React.FC<{ onClick : () => void }> = ({ onClick }) => {
+const CrossIcon: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <button className="flex items-center px-3 py-2" onClick={onClick}>
       <svg
@@ -45,24 +45,24 @@ const CrossIcon: React.FC<{ onClick : () => void }> = ({ onClick }) => {
 };
 
 const MobileMenu = () => {
-  const [isNavOpen, setNavOpen] = useState(false)
+  const [isNavOpen, setNavOpen] = useState(false);
   return (
     <>
       {isNavOpen ? (
         <>
-        <div className="order-10 flex-wrap w-full md:hidden">
-        <ul>
-          <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
-            About
-          </li>
-          <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
-            Articles
-          </li>
-        </ul>
-        </div>
-        <div className="order-9 flex-none md:hidden">
-          <CrossIcon onClick={() => setNavOpen(!isNavOpen)}/>
-        </div>
+          <div className="order-10 w-full flex-wrap md:hidden">
+            <ul>
+              <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
+                About
+              </li>
+              <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
+                Articles
+              </li>
+            </ul>
+          </div>
+          <div className="order-9 flex-none md:hidden">
+            <CrossIcon onClick={() => setNavOpen(!isNavOpen)} />
+          </div>
         </>
       ) : (
         <div className="order-9 flex-none md:hidden">
@@ -72,7 +72,6 @@ const MobileMenu = () => {
     </>
   );
 };
-
 
 const Nav = () => {
   // https://flowbite.com/docs/components/navbar/
