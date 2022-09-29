@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Post } from "../../types/post";
 
 const Content: React.FC<{ post: Post }> = (props) => {
@@ -12,12 +12,16 @@ const Content: React.FC<{ post: Post }> = (props) => {
   };
   const link = `/posts/${params.year}/${params.month}/${params.day}/${params.name}`;
 
+  const [postDate, setPostDate] = useState("");
+  useEffect(
+    () => setPostDate(new Date(props.post.postMeta.date).toLocaleDateString()),
+    []
+  );
+
   return (
     <div className="flex flex-wrap py-8 md:flex-nowrap">
       <div className="mb-6 mr-20 flex flex-shrink-0 flex-col">
-        <span className="title-font font-semibold">
-          {new Date(props.post.postMeta.date).toLocaleDateString()}
-        </span>
+        <span className="title-font font-semibold">{postDate}</span>
         <span className="mt-1 text-sm">{"TODO: Tags"}</span>
       </div>
       <div className="md:flex-grow">
