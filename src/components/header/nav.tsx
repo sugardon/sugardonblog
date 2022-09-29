@@ -55,9 +55,12 @@ const MobileMenu = () => {
               <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
                 About
               </li>
-              <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
-                Articles
-              </li>
+
+              <Link href="/posts">
+                <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
+                  Articles
+                </li>
+              </Link>
             </ul>
           </div>
           <div className="order-9 flex-none md:hidden">
@@ -69,6 +72,25 @@ const MobileMenu = () => {
           <HamburgerIcon onClick={() => setNavOpen(!isNavOpen)} />
         </div>
       )}
+    </>
+  );
+};
+
+const DesktopMenu = () => {
+  return (
+    <>
+      <div className="order-6 mr-6 hidden md:flex">
+        <ul>
+          <li className="mt-4 mr-6 text-xl hover:text-indigo-700 md:mt-0 md:inline-block">
+            About
+          </li>
+          <Link href="/posts">
+            <li className="mt-4 mr-6 text-xl hover:text-indigo-700 md:mt-0 md:inline-block">
+              Articles
+            </li>
+          </Link>
+        </ul>
+      </div>
     </>
   );
 };
@@ -94,6 +116,7 @@ const Nav = () => {
         </div>
         {/* right md:center */}
         <MobileMenu />
+        <DesktopMenu />
       </div>
     </nav>
   );
