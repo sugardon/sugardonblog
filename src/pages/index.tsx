@@ -36,7 +36,10 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
           <Hero />
         </Container>
         <Container>
-          <PostList posts={props.allPosts} />
+          <PostList
+            posts={props.allPosts}
+            options={{ showDraft: false, pageSize: 5, pageNumber: 1 }}
+          />
         </Container>
       </Main>
     </Layout>
