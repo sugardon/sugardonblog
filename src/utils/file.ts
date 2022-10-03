@@ -8,6 +8,8 @@ export const getMDXPathsRecursively = (
   const currentDirents = fs.readdirSync(targetPath, { withFileTypes: true });
 
   const directoryDirents = currentDirents.filter((d) => d.isDirectory());
+  // Order by desc is good for blog post list.
+  directoryDirents.reverse();
   const directoryPaths = directoryDirents.flatMap((d) =>
     getMDXPathsRecursively(path.join(targetPath, d.name), paths)
   );

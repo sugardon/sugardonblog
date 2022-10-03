@@ -45,10 +45,22 @@ interface PostListProps {
 }
 // https://tailblocks.cc/
 export const List: React.FC<PostListProps> = (props) => {
-  const posts =
-    props.options && props.options.showDraft
-      ? props.posts
-      : props.posts.filter((p) => !p.postMeta.draft);
+  let posts = props.posts;
+
+  if (props.options) {
+    posts = props.options.showDraft
+      ? posts
+      : posts.filter((p) => !p.postMeta.draft);
+    posts =
+      props.options.pageSize !== 0 && props.options.pageNumber !== 0
+        ? posts.slice(
+            props.options.pageSize * (props.options.pageNumber - 1),
+            props.options.pageSize * (props.options.pageNumber - 1) +
+              props.options.pageSize
+          )
+        : posts;
+  }
+
   return (
     <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
       {posts.map((p, i) => {
