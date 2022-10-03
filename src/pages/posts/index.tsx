@@ -8,10 +8,12 @@ import { Layout, Main } from "../../components/layout";
 import Nav from "../../components/header";
 import Container from "../../containers/Container";
 import { PostList } from "../../components/post";
+import { GetOptions } from "../../utils/post-page";
 
 interface indexProps {
   allPosts: Post[];
 }
+
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await GetAllPosts();
   return {
@@ -24,9 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Index: React.FC<indexProps> = (props: indexProps) => {
   const router = useRouter();
-  const { draft } = router.query;
-  const showDraft =
-    typeof draft === "string" && ["True", "true"].includes(draft);
+  const options = GetOptions(router.query);
 
   return (
     <Layout>
@@ -37,7 +37,7 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
 
       <Main>
         <Container>
-          <PostList posts={props.allPosts} showDraft={showDraft} />
+          <PostList posts={props.allPosts} options={options} />
         </Container>
       </Main>
     </Layout>

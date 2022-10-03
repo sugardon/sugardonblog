@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Post } from "../../types/post";
+import { Options } from "../../types/post-page";
 
 const Content: React.FC<{ post: Post }> = (props) => {
   const pathList = props.post.path.split("/");
@@ -40,13 +41,14 @@ const Content: React.FC<{ post: Post }> = (props) => {
 
 interface PostListProps {
   posts: Post[];
-  showDraft?: boolean;
+  options?: Options;
 }
 // https://tailblocks.cc/
 export const List: React.FC<PostListProps> = (props) => {
-  const posts = props.showDraft
-    ? props.posts
-    : props.posts.filter((p) => !p.postMeta.draft);
+  const posts =
+    props.options && props.options.showDraft
+      ? props.posts
+      : props.posts.filter((p) => !p.postMeta.draft);
   return (
     <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
       {posts.map((p, i) => {
