@@ -2,11 +2,24 @@ import * as fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
-import { Post, PostMeta } from "../types/post";
+import { Post, PostMeta, PostPath } from "../types/post";
 import { getMDXPathsRecursively } from "./file";
 
-const toPostMeta = (frontMatter: { [key: string]: string }) => {
+const toPostPath = (path: string): PostPath => {
+  const p = path.split("/");
+  const name = p.slice(-1)[0];
+  return {
+    year: p.slice(-4)[0],
+    month: p.slice(-3)[0],
+    day: p.slice(-2)[0],
+    name: name.split(".")[0],
+    // type: name.split(".")[1],
+  };
+};
+
+const toPostMeta = (frontMatter: { [key: string]: string }, path: string) => {
   const postMeta: PostMeta = {
+    path: toPostPath(path),
     title: frontMatter.title || "No Title",
     description: frontMatter.description || "No Description",
     date: frontMatter.date || "1900-01-01",
@@ -23,8 +36,8 @@ export const GetPost = async (path: string) => {
   const { content, data } = matter(source);
   const mdxSource = await serialize(content, { scope: data });
   const post: Post = {
-    path: path.replace(/\.mdx?$/, ""),
-    postMeta: toPostMeta(data),
+    path: path.replace(/\.mdx?$/, ""), // TODO: delete
+    postMeta: toPostMeta(data, path),
     source: mdxSource,
   };
   return post;

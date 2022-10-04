@@ -11,16 +11,14 @@ import Nav from "../../../../../components/header";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await GetAllPosts();
-  const allPaths = allPosts.map((p) => p.path);
 
-  const paths = allPaths.map((path) => {
-    const p = path.split("/");
+  const paths = allPosts.map((p) => {
     const id = {
       params: {
-        year: p.slice(-4)[0],
-        month: p.slice(-3)[0],
-        day: p.slice(-2)[0],
-        name: p.slice(-1)[0],
+        year: p.postMeta.path.year,
+        month: p.postMeta.path.month,
+        day: p.postMeta.path.day,
+        name: p.postMeta.path.name,
       },
     };
     return id;
@@ -42,7 +40,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      name: post.path,
       postMeta: post.postMeta,
       source: post.source,
     },
