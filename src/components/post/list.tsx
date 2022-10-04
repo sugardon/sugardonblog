@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Post, PostMeta } from "../../types/post";
+import { PostMeta } from "../../types/post";
 import { Options } from "../../types/post-page";
 
 const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
@@ -34,33 +34,31 @@ const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
 };
 
 interface PostListProps {
-  posts: Post[];
+  postMeta: PostMeta[];
   options?: Options;
 }
 // https://tailblocks.cc/
 export const List: React.FC<PostListProps> = (props) => {
-  let posts = props.posts;
+  let pms = props.postMeta;
 
   if (props.options) {
-    posts = props.options.showDraft
-      ? posts
-      : posts.filter((p) => !p.postMeta.draft);
-    posts =
+    pms = props.options.showDraft ? pms : pms.filter((pm) => !pm.draft);
+    pms =
       props.options.pageSize !== 0 && props.options.pageNumber !== 0
-        ? posts.slice(
+        ? pms.slice(
             props.options.pageSize * (props.options.pageNumber - 1),
             props.options.pageSize * (props.options.pageNumber - 1) +
               props.options.pageSize
           )
-        : posts;
+        : pms;
   }
 
   return (
     <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
-      {posts.map((p, i) => {
+      {pms.map((pm, i) => {
         return (
           <div key={i}>
-            <Content postMeta={p.postMeta} />
+            <Content postMeta={pm} />
           </div>
         );
       })}

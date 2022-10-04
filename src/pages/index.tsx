@@ -37,7 +37,7 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
         </Container>
         <Container>
           <PostList
-            posts={props.allPosts}
+            postMeta={props.allPosts.map((p) => p.postMeta)}
             options={{ showDraft: false, pageSize: 5, pageNumber: 1 }}
           />
         </Container>
