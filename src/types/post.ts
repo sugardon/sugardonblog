@@ -13,11 +13,10 @@ export interface PostMeta {
   description: string;
   date: string;
   draft: boolean;
-  all: { [key: string]: string };
+  // all: { [key: string]: string };
 }
 
 export interface Post {
-  path: string;
   postMeta: PostMeta;
   source: MDXRemoteSerializeResult;
 }

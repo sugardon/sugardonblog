@@ -24,7 +24,7 @@ const toPostMeta = (frontMatter: { [key: string]: string }, path: string) => {
     description: frontMatter.description || "No Description",
     date: frontMatter.date || "1900-01-01",
     draft: ["True", "true"].includes(frontMatter.draft),
-    all: frontMatter,
+    // all: frontMatter,
   };
   return postMeta;
 };
@@ -36,7 +36,6 @@ export const GetPost = async (path: string) => {
   const { content, data } = matter(source);
   const mdxSource = await serialize(content, { scope: data });
   const post: Post = {
-    path: path.replace(/\.mdx?$/, ""), // TODO: delete
     postMeta: toPostMeta(data, path),
     source: mdxSource,
   };
