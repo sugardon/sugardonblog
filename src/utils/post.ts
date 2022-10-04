@@ -29,6 +29,13 @@ const toPostMeta = (frontMatter: { [key: string]: string }, path: string) => {
   return postMeta;
 };
 
+export const GetPostMeta = async (path: string) => {
+  const source = fs.readFileSync(path);
+
+  const { data } = matter(source);
+  return toPostMeta(data, path);
+};
+
 export const GetPost = async (path: string) => {
   const source = fs.readFileSync(path);
 
@@ -49,4 +56,13 @@ export const GetAllPosts = async () => {
   );
   const posts: Post[] = await Promise.all(paths.map((p) => GetPost(p)));
   return posts;
+};
+
+export const GetAllPostMeta = async () => {
+  const paths: string[] = getMDXPathsRecursively(
+    path.join(process.cwd(), "posts"),
+    []
+  );
+  const pms: PostMeta[] = await Promise.all(paths.map((p) => GetPostMeta(p)));
+  return pms;
 };

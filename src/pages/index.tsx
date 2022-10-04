@@ -5,18 +5,18 @@ import Container from "../containers/Container";
 import Nav from "../components/header";
 import { Layout, Main } from "../components/layout";
 import { PostList } from "../components/post";
-import { GetAllPosts } from "../utils/post";
-import { Post } from "../types/post";
+import { GetAllPostMeta } from "../utils/post";
+import { PostMeta } from "../types/post";
 import Hero from "../components/hero";
 
 interface indexProps {
-  allPosts: Post[];
+  allPostMeta: PostMeta[];
 }
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await GetAllPosts();
+  const pms = await GetAllPostMeta();
   return {
     props: {
-      allPosts,
+      allPostMeta: pms,
     },
   };
 };
@@ -37,7 +37,7 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
         </Container>
         <Container>
           <PostList
-            postMeta={props.allPosts.map((p) => p.postMeta)}
+            postMeta={props.allPostMeta}
             options={{ showDraft: false, pageSize: 5, pageNumber: 1 }}
           />
         </Container>
