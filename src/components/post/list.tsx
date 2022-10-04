@@ -1,21 +1,15 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Post } from "../../types/post";
+import { PostMeta } from "../../types/post";
 import { Options } from "../../types/post-page";
 
-const Content: React.FC<{ post: Post }> = (props) => {
-  const pathList = props.post.path.split("/");
-  const params = {
-    year: pathList.slice(-4)[0],
-    month: pathList.slice(-3)[0],
-    day: pathList.slice(-2)[0],
-    name: pathList.slice(-1)[0],
-  };
-  const link = `/posts/${params.year}/${params.month}/${params.day}/${params.name}`;
+const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
+  const path = props.postMeta.path;
+  const link = `/posts/${path.year}/${path.month}/${path.day}/${path.name}`;
 
   const [postDate, setPostDate] = useState("");
   useEffect(
-    () => setPostDate(new Date(props.post.postMeta.date).toLocaleDateString()),
+    () => setPostDate(new Date(props.postMeta.date).toLocaleDateString()),
     []
   );
 
@@ -29,44 +23,42 @@ const Content: React.FC<{ post: Post }> = (props) => {
         <h2 className="title-font mb-2 text-2xl font-medium">
           <Link href={link}>
             <a className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
-              {props.post.postMeta.title}
+              {props.postMeta.title}
             </a>
           </Link>
         </h2>
-        <p className="leading-relaxed">{props.post.postMeta.description}</p>
+        <p className="leading-relaxed">{props.postMeta.description}</p>
       </div>
     </div>
   );
 };
 
 interface PostListProps {
-  posts: Post[];
+  postMeta: PostMeta[];
   options?: Options;
 }
 // https://tailblocks.cc/
 export const List: React.FC<PostListProps> = (props) => {
-  let posts = props.posts;
+  let pms = props.postMeta;
 
   if (props.options) {
-    posts = props.options.showDraft
-      ? posts
-      : posts.filter((p) => !p.postMeta.draft);
-    posts =
+    pms = props.options.showDraft ? pms : pms.filter((pm) => !pm.draft);
+    pms =
       props.options.pageSize !== 0 && props.options.pageNumber !== 0
-        ? posts.slice(
+        ? pms.slice(
             props.options.pageSize * (props.options.pageNumber - 1),
             props.options.pageSize * (props.options.pageNumber - 1) +
               props.options.pageSize
           )
-        : posts;
+        : pms;
   }
 
   return (
     <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
-      {posts.map((p, i) => {
+      {pms.map((pm, i) => {
         return (
           <div key={i}>
-            <Content post={p} />
+            <Content postMeta={pm} />
           </div>
         );
       })}
