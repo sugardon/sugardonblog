@@ -3,6 +3,27 @@ import React, { useEffect, useState } from "react";
 import { PostMeta } from "../../types/post";
 import { Options } from "../../types/post-page";
 
+const Tag: React.FC<{ tag: string[] }> = (props) => {
+  return (
+    <div className="flex flex-wrap py-1">
+      {props.tag.map((t, i) => {
+        return (
+          <div
+            key={i}
+            className="mx-1 my-1 flex items-center rounded-full bg-gray-300 px-2 py-1 text-sm font-semibold text-slate-800"
+          >
+            <Link href={`/posts?tag=${t}`}>
+              <a className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
+                {t}
+              </a>
+            </Link>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
   const path = props.postMeta.path;
   const link = `/posts/${path.year}/${path.month}/${path.day}/${path.name}`;
@@ -15,9 +36,9 @@ const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
 
   return (
     <div className="flex flex-wrap py-8 md:flex-nowrap">
-      <div className="mb-6 mr-20 flex flex-shrink-0 flex-col">
+      <div className="mr-10 flex w-60 flex-shrink-0 flex-col">
         <span className="title-font font-semibold">{postDate}</span>
-        <span className="mt-1 text-sm">{"TODO: Tags"}</span>
+        {props.postMeta.tag.length !== 0 && <Tag tag={props.postMeta.tag} />}
       </div>
       <div className="md:flex-grow">
         <h2 className="title-font mb-2 text-2xl font-medium">

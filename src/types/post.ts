@@ -13,6 +13,7 @@ export interface PostMeta {
   description: string;
   date: string;
   draft: boolean;
+  tag: string[];
   // all: { [key: string]: string };
 }
 

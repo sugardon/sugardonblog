@@ -16,6 +16,13 @@ const toPostPath = (path: string): PostPath => {
     // type: name.split(".")[1],
   };
 };
+const getTag = (frontMatter: { [key: string]: string }): string[] => {
+  if (typeof frontMatter.tag === "object") {
+    return Object.values(frontMatter.tag);
+  } else {
+    return [];
+  }
+};
 
 const toPostMeta = (frontMatter: { [key: string]: string }, path: string) => {
   const postMeta: PostMeta = {
@@ -24,6 +31,7 @@ const toPostMeta = (frontMatter: { [key: string]: string }, path: string) => {
     description: frontMatter.description || "No Description",
     date: frontMatter.date || "1900-01-01",
     draft: ["True", "true"].includes(frontMatter.draft),
+    tag: getTag(frontMatter),
     // all: frontMatter,
   };
   return postMeta;
