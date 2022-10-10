@@ -4,9 +4,8 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { PostMeta } from "../../types/post";
 import { GetAllPostMeta } from "../../utils/post";
-import { Layout, Main } from "../../components/layout";
+import { Layout, Main, Container } from "../../components/layout";
 import Nav from "../../components/header";
-import Container from "../../containers/Container";
 import { PostList } from "../../containers/posts";
 import { GetOptions } from "../../utils/post-page";
 

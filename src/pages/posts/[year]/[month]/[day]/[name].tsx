@@ -3,10 +3,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { GetAllPosts, GetPost } from "../../../../../utils/post";
 import { Post } from "../../../../../types/post";
-import { Layout, Main } from "../../../../../components/layout";
+import { Layout, Main, Container } from "../../../../../components/layout";
 import { PostTitle } from "../../../../../components/post";
 import Components from "../../../../../components/mdx-remote";
-import Container from "../../../../../containers/Container";
 import Nav from "../../../../../components/header";
 
 export const getStaticPaths: GetStaticPaths = async () => {

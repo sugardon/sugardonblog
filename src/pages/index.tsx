@@ -1,9 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
-import Container from "../containers/Container";
 import Nav from "../components/header";
-import { Layout, Main } from "../components/layout";
+import { Layout, Main, Container } from "../components/layout";
 import { PostList } from "../containers/posts";
 import { GetAllPostMeta } from "../utils/post";
 import { PostMeta } from "../types/post";
