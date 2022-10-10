@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { PostMeta } from "../../types/post";
-import { Options } from "../../types/post-page";
 
 const Tag: React.FC<{ tag: string[] }> = (props) => {
   return (
@@ -24,7 +23,7 @@ const Tag: React.FC<{ tag: string[] }> = (props) => {
   );
 };
 
-const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
+const Row: React.FC<{ postMeta: PostMeta }> = (props) => {
   const path = props.postMeta.path;
   const link = `/posts/${path.year}/${path.month}/${path.day}/${path.name}`;
 
@@ -54,37 +53,4 @@ const Content: React.FC<{ postMeta: PostMeta }> = (props) => {
   );
 };
 
-interface PostListProps {
-  postMeta: PostMeta[];
-  options?: Options;
-}
-// https://tailblocks.cc/
-export const List: React.FC<PostListProps> = (props) => {
-  let pms = props.postMeta;
-
-  if (props.options) {
-    pms = props.options.showDraft ? pms : pms.filter((pm) => !pm.draft);
-    pms =
-      props.options.pageSize !== 0 && props.options.pageNumber !== 0
-        ? pms.slice(
-            props.options.pageSize * (props.options.pageNumber - 1),
-            props.options.pageSize * (props.options.pageNumber - 1) +
-              props.options.pageSize
-          )
-        : pms;
-  }
-
-  return (
-    <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
-      {pms.map((pm, i) => {
-        return (
-          <div key={i}>
-            <Content postMeta={pm} />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-export default List;
+export default Row;

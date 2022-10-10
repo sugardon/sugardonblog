@@ -7,7 +7,7 @@ import { GetAllPostMeta } from "../../utils/post";
 import { Layout, Main } from "../../components/layout";
 import Nav from "../../components/header";
 import Container from "../../containers/Container";
-import { PostList } from "../../components/post";
+import { PostList } from "../../containers/posts";
 import { GetOptions } from "../../utils/post-page";
 
 interface indexProps {
