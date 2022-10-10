@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { GetAllPosts, GetPost } from "../../../../../utils/post";
 import { Post } from "../../../../../types/post";
 import { Layout, Main } from "../../../../../components/layout";
-import Title from "../../../../../containers/Posts/Title";
+import { PostTitle } from "../../../../../components/post";
 import Components from "../../../../../components/mdx-remote";
 import Container from "../../../../../containers/Container";
 import Nav from "../../../../../components/header";
@@ -53,7 +53,7 @@ export const Name: React.FC<Post> = ({ postMeta, source }: Post) => {
       <Main>
         <Container>
           <div className="xl:px-20">
-            <Title>{postMeta.title}</Title>
+            <PostTitle>{postMeta.title}</PostTitle>
           </div>
           <div className="space-y-5 text-xl xl:px-20">
             <MDXRemote {...source} components={Components} />
