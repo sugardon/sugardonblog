@@ -2,12 +2,13 @@ import React from "react";
 import Head from "next/head";
 import Nav from "../../components/header";
 import { Layout, Main, Container } from "../../components/layout";
+import { GitHubIcon, TwitterIcon } from "../../components/icon";
 
 export const Index: React.FC = () => {
   return (
     <Layout>
       <Head>
-        <title>About</title>
+        <title>about - sugardonblog</title>
       </Head>
       <Nav />
 
@@ -25,8 +26,23 @@ export const Index: React.FC = () => {
             <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">
               Link
             </h2>
-            <ul className="mb-6 list-inside list-disc sm:text-lg md:mb-8">
-              <li>This is a section of link, like sns.</li>
+            <ul className="mb-8 space-y-4 text-left">
+              <li className="flex items-center space-x-3">
+                <GitHubIcon />
+                <a href="https://github.com/sugardon">
+                  <span className="hover:text-indigo-700">
+                    {"https://github.com/sugardon"}
+                  </span>
+                </a>
+              </li>
+              <li className="flex items-center space-x-3">
+                <TwitterIcon />
+                <a href="https://twitter.com/sugar2don">
+                  <span className="hover:text-indigo-700">
+                    {"https://twitter.com/sugar2don"}
+                  </span>
+                </a>
+              </li>
             </ul>
 
             <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">

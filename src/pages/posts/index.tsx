@@ -30,7 +30,7 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
   return (
     <Layout>
       <Head>
-        <title>Posts</title>
+        <title>articles - sugardonblog</title>
       </Head>
       <Nav />
 
