@@ -27,10 +27,11 @@ const MobileMenu = () => {
         <>
           <div className="order-10 w-full flex-wrap md:hidden">
             <ul>
-              <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
-                About
-              </li>
-
+              <Link href="/about">
+                <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
+                  About
+                </li>
+              </Link>
               <Link href="/posts">
                 <li className="mt-4 mr-4 hover:text-indigo-700 md:mt-0 md:inline-block">
                   Articles
@@ -56,9 +57,11 @@ const DesktopMenu = () => {
     <>
       <div className="order-6 mr-6 hidden md:flex">
         <ul>
-          <li className="mt-4 mr-6 text-xl hover:text-indigo-700 md:mt-0 md:inline-block">
-            About
-          </li>
+          <Link href="/about">
+            <li className="mt-4 mr-6 text-xl hover:text-indigo-700 md:mt-0 md:inline-block">
+              About
+            </li>
+          </Link>
           <Link href="/posts">
             <li className="mt-4 mr-6 text-xl hover:text-indigo-700 md:mt-0 md:inline-block">
               Articles
