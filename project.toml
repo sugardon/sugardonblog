@@ -9,4 +9,4 @@ value = "production"
 
 [[build.env]]
 name = "BP_NODE_RUN_SCRIPTS"
-value = "lint,test:ci,build"
+value = "lint,build"

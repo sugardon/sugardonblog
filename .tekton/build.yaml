@@ -72,4 +72,4 @@ spec:
           - name: ENV_VARS
             value:
               - "NODE_ENV=production"
-              - "BP_NODE_RUN_SCRIPTS=lint,test:ci,build"
+              - "BP_NODE_RUN_SCRIPTS=lint,build"
