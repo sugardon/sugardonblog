@@ -12,7 +12,10 @@ export const List: React.FC<PostListProps> = (props) => {
   let pms = props.postMeta;
 
   if (props.options) {
-    pms = props.options.showDraft ? pms : pms.filter((pm) => !pm.draft);
+    if (!props.options.showDraft) pms = pms.filter((pm) => !pm.draft);
+    if (props.options.tag)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      pms = pms.filter((pm) => pm.tag.includes(props.options!.tag!));
     pms =
       props.options.pageSize !== 0 && props.options.pageNumber !== 0
         ? pms.slice(
