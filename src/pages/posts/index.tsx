@@ -6,7 +6,7 @@ import { PostMeta } from "../../types/post";
 import { GetAllPostMeta } from "../../utils/post";
 import { Layout, Main, Container } from "../../components/layout";
 import Nav from "../../components/header";
-import { PostList } from "../../containers/posts";
+import { OptionView, PostList } from "../../containers/posts";
 import { GetOptions } from "../../utils/post-page";
 
 interface indexProps {
@@ -36,6 +36,7 @@ export const Index: React.FC<indexProps> = (props: indexProps) => {
 
       <Main>
         <Container>
+          <OptionView options={options} />
           <PostList postMeta={props.allPostMeta} options={options} />
         </Container>
       </Main>
