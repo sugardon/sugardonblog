@@ -28,13 +28,17 @@ export const List: React.FC<PostListProps> = (props) => {
 
   return (
     <div className="-my-8 divide-y-2 divide-gray-100 dark:divide-slate-700">
-      {pms.map((pm, i) => {
-        return (
-          <div key={i}>
-            <PostListRow postMeta={pm} />
-          </div>
-        );
-      })}
+      {pms.length !== 0 ? (
+        pms.map((pm, i) => {
+          return (
+            <div key={i}>
+              <PostListRow postMeta={pm} />
+            </div>
+          );
+        })
+      ) : (
+        <div className="py-8 text-2xl"> No post found </div>
+      )}
     </div>
   );
 };
