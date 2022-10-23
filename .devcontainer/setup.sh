@@ -6,7 +6,7 @@ nvm use
 yarn
 
 # skaffold
-curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v1.39.2/skaffold-linux-amd64 && \
 sudo install skaffold /usr/local/bin/
 rm skaffold
 # buildpack

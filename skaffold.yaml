@@ -15,7 +15,7 @@ deploy:
       - name: nextjs-sugardonblog
         repo: "https://helm.sugardon.com"
         remoteChart: "nextjs"
-        version: 0.0.1
+        version: 0.0.3
         #https://skaffold.dev/docs/pipeline-stages/deployers/helm/#helm-strategy-split-repository-and-tag
         artifactOverrides:
           image: sugardonblog
