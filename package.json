@@ -26,7 +26,7 @@
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.2.0",
     "@types/node": "^16.11.59",
-    "@types/react": "^18.0.21",
+    "@types/react": "^18.0.24",
     "@types/react-syntax-highlighter": "^15.5.5",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
