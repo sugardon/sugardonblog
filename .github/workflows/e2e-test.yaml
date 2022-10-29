@@ -44,8 +44,8 @@ jobs:
         run: |
           kubectl expose service nextjs-sugardonblog --type=NodePort --port=8080 --name=nextjs-sugardonblog-test
           echo "PLAYWRIGHT_BASE_URL=$(minikube service nextjs-sugardonblog-test --url=true)" >> $GITHUB_ENV
-          curl --retry 10 --retry-connrefused $PLAYWRIGHT_BASE_URL -i
       # execute test
       - name: run test
         run: |
+          curl --retry 10 --retry-connrefused $PLAYWRIGHT_BASE_URL -i
           yarn test:e2e
