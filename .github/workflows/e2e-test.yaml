@@ -40,10 +40,10 @@ jobs:
         run: |
           skaffold run --status-check=true
       # prepare test
-      - name: setup blog for test
+      - name: prepare test
         run: |
           kubectl expose service nextjs-sugardonblog --type=NodePort --port=8080 --name=nextjs-sugardonblog-test
-          export PLAYWRIGHT_BASE_URL=$(minikube service nextjs-sugardonblog-test --url=true)
+          echo "PLAYWRIGHT_BASE_URL=$(minikube service nextjs-sugardonblog-test --url=true)" >> $GITHUB_ENV
           curl --retry 10 --retry-connrefused $PLAYWRIGHT_BASE_URL -i
       # execute test
       - name: run test
