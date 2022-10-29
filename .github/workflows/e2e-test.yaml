@@ -17,6 +17,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      # setup node
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      # https://playwright.dev/docs/ci-intro#github-actions
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      # setup kubernetes
       - name: start minikube
         uses: medyagh/setup-minikube@master
         with:
@@ -27,8 +39,13 @@ jobs:
       - name: skaffold production
         run: |
           skaffold run --status-check=true
-      - name: test
-        # TODO: Update test to use e2e framework
+      # prepare test
+      - name: setup blog for test
         run: |
           kubectl expose service nextjs-sugardonblog --type=NodePort --port=8080 --name=nextjs-sugardonblog-test
-          curl --retry 10 --retry-connrefused $(minikube service nextjs-sugardonblog-test --url=true) -i
+          export PLAYWRIGHT_BASE_URL=$(minikube service nextjs-sugardonblog-test --url=true)
+          curl --retry 10 --retry-connrefused $PLAYWRIGHT_BASE_URL -i
+      # execute test
+      - name: run test
+        run: |
+          yarn test:e2e
