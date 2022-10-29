@@ -26,7 +26,7 @@ const h1 = ({ children }: { children?: React.ReactNode }) => {
       <div className="group flex items-center">
         <h1 className="mt-2 text-5xl font-bold" id={anchor}>
           <Link href={`#${anchor}`}>
-            <a>{children}</a>
+            <div>{children}</div>
           </Link>
         </h1>
         <AnchorLinkIcon anchor={anchor} />
@@ -42,7 +42,7 @@ const h2 = ({ children }: { children?: React.ReactNode }) => {
       <div className="group flex items-center">
         <h2 className="mt-2 text-3xl font-bold" id={anchor}>
           <Link href={`#${anchor}`}>
-            <a>{children}</a>
+            <div>{children}</div>
           </Link>
         </h2>
         <AnchorLinkIcon anchor={anchor} />
