@@ -52,7 +52,7 @@ jobs:
         env:
           PLAYWRIGHT_ENABLE_REPORT: True
           CI: True
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
