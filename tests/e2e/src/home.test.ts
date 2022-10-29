@@ -1,22 +1,38 @@
 import { test, expect } from "@playwright/test";
 
-test("homepage has Playwright in title and get started link linking to the intro page", async ({
-  page,
-}) => {
-  await page.goto("https://playwright.dev/");
+// https://playwright.dev/docs/test-parallel
+test.describe.configure({ mode: "parallel" });
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+test.describe("home", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/");
+  });
+  test("home layout", async ({ page }) => {
+    // Expect a title "to contain" a substring.
+    await expect(page).toHaveTitle(/sugardonblog/);
+  });
 
-  // create a locator
-  const getStarted = page.getByText("Get Started");
+  // navigation
+  test("navigation", async ({ page }) => {
+    const aboutLink = page.getByRole("navigation").getByText("sugardon blog");
+    await aboutLink.click();
+    await expect(page).not.toHaveURL("error");
+  });
+  test("navigation about", async ({ page }) => {
+    const aboutLink = page.getByRole("navigation").getByText("About");
+    await aboutLink.click();
+    await expect(page).toHaveURL(/.*about/);
+  });
+  test("navigation articles", async ({ page }) => {
+    const aboutButton = page.getByRole("navigation").getByText("Articles");
+    await aboutButton.click();
+    await expect(page).toHaveURL(/.*posts/);
+  });
 
-  // Expect an attribute "to be strictly equal" to the value.
-  await expect(getStarted).toHaveAttribute("href", "/docs/intro");
-
-  // Click the get started link.
-  await getStarted.click();
-
-  // Expects the URL to contain intro.
-  await expect(page).toHaveURL(/.*intro/);
+  // main
+  test("main about", async ({ page }) => {
+    const aboutButton = page.getByRole("main").getByText("About");
+    await aboutButton.click();
+    await expect(page).toHaveURL(/.*about/);
+  });
 });
