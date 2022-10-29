@@ -32,3 +32,8 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
    # $ skaffold delete
    ```
 1. Open http://localhost:8080
+1. E2E test
+   ```bash
+   export PLAYWRIGHT_BASE_URL="http://localhost:8080"
+   yarn test:e2e
+   ```

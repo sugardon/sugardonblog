@@ -81,9 +81,9 @@ const Nav = () => {
         {/* logo */}
         <div className="order-first mr-6 flex-none">
           <Link href="/">
-            <a className="text-black-800 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl">
+            <div className="text-black-800 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl">
               sugardon blog
-            </a>
+            </div>
           </Link>
         </div>
         {/* center */}

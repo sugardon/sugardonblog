@@ -12,9 +12,9 @@ const Tag: React.FC<{ tag: string[] }> = (props) => {
             className="mx-1 my-1 flex items-center rounded-full bg-gray-300 px-2 py-1 text-sm font-semibold text-slate-800"
           >
             <Link href={`/posts?tag=${t}`}>
-              <a className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
+              <div className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
                 {t}
-              </a>
+              </div>
             </Link>
           </div>
         );
@@ -42,9 +42,9 @@ const Row: React.FC<{ postMeta: PostMeta }> = (props) => {
       <div className="md:flex-grow">
         <h2 className="title-font mb-2 text-2xl font-medium">
           <Link href={link}>
-            <a className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
+            <div className="transition duration-100 hover:text-indigo-700 active:text-indigo-800">
               {props.postMeta.title}
-            </a>
+            </div>
           </Link>
         </h2>
         <p className="leading-relaxed">{props.postMeta.description}</p>
