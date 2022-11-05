@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
+import sugardonImg from "../../../public/sugardon.webp";
 
 const Hero: React.FC = () => {
   return (
@@ -14,25 +16,28 @@ const Hero: React.FC = () => {
         </h1>
 
         <div className="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-          <Link href="/about">
-            <div className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">
-              About
-            </div>
+          <Link
+            href="/about"
+            className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"
+          >
+            About
           </Link>
 
-          <Link href="/posts">
-            <div className="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
-              Articles
-            </div>
+          <Link
+            href="/posts"
+            className="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base"
+          >
+            Articles
           </Link>
         </div>
       </div>
 
       <div className="h-48 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:h-auto xl:w-5/12">
-        <img
-          src="./sugardon.webp"
-          loading="lazy"
+        <Image
+          src={sugardonImg}
           alt="sugardon"
+          loading="lazy"
+          placeholder="blur"
           className="h-full w-full object-cover object-center"
         />
       </div>
