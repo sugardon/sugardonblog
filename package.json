@@ -26,7 +26,7 @@
     "@playwright/test": "^1.27.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@types/jest": "^29.2.2",
+    "@types/jest": "^29.2.3",
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.25",
     "@types/react-syntax-highlighter": "^15.5.5",
