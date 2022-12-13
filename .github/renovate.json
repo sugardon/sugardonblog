@@ -5,5 +5,15 @@
   "timezone": "Asia/Tokyo",
   "prHourlyLimit": 0,
   "labels": ["dependencies", "renovate"],
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "regexManagers": [
+    {
+      "fileMatch": ["^Dockerfile$", "README.md", "(^|/)build\\.ya?ml$"],
+      "matchStrings": [
+        "paketobuildpacks/builder:(?<currentValue>.*?)(\n|\".*)"
+      ],
+      "depNameTemplate": "docker",
+      "datasourceTemplate": "paketobuildpacks/builder"
+    }
+  ]
 }
