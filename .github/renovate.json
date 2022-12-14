@@ -8,9 +8,9 @@
   "rangeStrategy": "bump",
   "regexManagers": [
     {
-      "fileMatch": ["README.md", "skaffold.ya?ml$","(^|/)build\\.ya?ml$"],
+      "fileMatch": ["README.md", "skaffold.ya?ml$", "(^|/)build\\.ya?ml$"],
       "matchStrings": [
-        "paketobuildpacks\/builder:(?<currentValue>.*?)(\n|\".*)"
+        "paketobuildpacks\\/builder:(?<currentValue>.*?)(\n|\".*)"
       ],
       "depNameTemplate": "docker",
       "datasourceTemplate": "paketobuildpacks/builder"
