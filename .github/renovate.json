@@ -9,9 +9,7 @@
   "regexManagers": [
     {
       "fileMatch": ["README.md", "skaffold.ya?ml$", "(^|/)build\\.ya?ml$"],
-      "matchStrings": [
-        "paketobuildpacks.builder:(?<currentValue>.*?)(\n|\".*)"
-      ],
+      "matchStrings": ["paketobuildpacks\\/builder:(?<currentValue>.*?)[\n\"]"],
       "depNameTemplate": "docker",
       "datasourceTemplate": "paketobuildpacks/builder"
     }
