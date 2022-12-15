@@ -13,7 +13,7 @@
    yarn test:e2e
    ```
 
-Also, you can use `blog.sugardon.com`
+Also, you can use `https://blog.sugardon.com`
 
 1. Set url
    ```bash
