@@ -73,3 +73,5 @@ spec:
             value:
               - "NODE_ENV=production"
               - "BP_NODE_RUN_SCRIPTS=lint,build"
+              # For playwright browser restriction
+              - "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true"
