@@ -9,7 +9,7 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 1. Build
    ```bash
-   pack build sugardonblog --builder=paketobuildpacks/builder:0.3.139-base
+   pack build sugardonblog --builder=paketobuildpacks/builder:0.3.141-base
    ```
 1. Run
    ```bash
