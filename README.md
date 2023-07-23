@@ -21,7 +21,7 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 1. Setup Kubernetes
    ```bash
-   minikube start --kubernetes-version=v1.23.7
+   minikube start --kubernetes-version=v1.26.5
    ```
 1. Run in Kuberntes
    ```bash
