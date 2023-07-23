@@ -1,5 +1,5 @@
 ---
-apiVersion: skaffold/v2beta29
+apiVersion: skaffold/v4beta6
 kind: Config
 metadata:
   name: sugardonblog
@@ -17,7 +17,7 @@ deploy:
         remoteChart: "nextjs"
         version: 0.0.3
         #https://skaffold.dev/docs/pipeline-stages/deployers/helm/#helm-strategy-split-repository-and-tag
-        artifactOverrides:
-          image: sugardonblog
-        imageStrategy:
-          helm: {}
+        setValueTemplates:
+          image:
+            repository: "{{.IMAGE_REPO_sugardonblog}}"
+            tag: "{{.IMAGE_TAG_sugardonblog}}@{{.IMAGE_DIGEST_sugardonblog}}"
