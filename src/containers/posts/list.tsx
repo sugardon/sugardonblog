@@ -21,7 +21,7 @@ export const List: React.FC<PostListProps> = (props) => {
         ? pms.slice(
             props.options.pageSize * (props.options.pageNumber - 1),
             props.options.pageSize * (props.options.pageNumber - 1) +
-              props.options.pageSize
+              props.options.pageSize,
           )
         : pms;
   }
