@@ -3,7 +3,7 @@ import path from "path";
 
 export const getMDXPathsRecursively = (
   targetPath: string,
-  paths: string[]
+  paths: string[],
 ): string[] => {
   const currentDirents = fs.readdirSync(targetPath, { withFileTypes: true });
 
@@ -11,11 +11,11 @@ export const getMDXPathsRecursively = (
   // Order by desc is good for blog post list.
   directoryDirents.reverse();
   const directoryPaths = directoryDirents.flatMap((d) =>
-    getMDXPathsRecursively(path.join(targetPath, d.name), paths)
+    getMDXPathsRecursively(path.join(targetPath, d.name), paths),
   );
 
   const pathDirents = currentDirents.filter(
-    (d) => d.isFile() && /\.mdx?$/.test(d.name)
+    (d) => d.isFile() && /\.mdx?$/.test(d.name),
   );
   const currentPaths = pathDirents.map((d) => path.join(targetPath, d.name));
 

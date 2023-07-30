@@ -30,7 +30,7 @@ const Row: React.FC<{ postMeta: PostMeta }> = (props) => {
   const [postDate, setPostDate] = useState("");
   useEffect(
     () => setPostDate(new Date(props.postMeta.date).toLocaleDateString()),
-    []
+    [],
   );
 
   return (
