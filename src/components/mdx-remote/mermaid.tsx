@@ -10,18 +10,18 @@ export const Mermaid: React.FC<{ children?: React.ReactNode }> = ({
   const { theme } = useTheme();
 
   useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: theme === "dark" ? "dark" : "default",
-    });
     const elm = elmRef.current;
     if (!elm) return;
     elm.innerHTML =
       typeof children === "string"
-        ? [`<div class="mermaid">`, children, `</div>`].join("")
+        ? [`<pre class="mermaid">`, children, `</pre>`].join("")
         : "";
-    mermaid.init(".mermaid");
-  }, [children]);
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: theme === "dark" ? "dark" : "default",
+    });
+    mermaid.run();
+  }, [children, theme]);
 
   return (
     <div>
