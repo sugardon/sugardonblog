@@ -20,9 +20,9 @@ export const Index: React.FC = () => {
               About
             </h1>
             <p className="mb-6 text-center sm:text-lg md:mb-8">
-              sugardon - software engineer
+              sugardon - Spend a fluffy time with technology.
             </p>
-
+            {/* Link */}
             <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">
               Link
             </h2>
@@ -37,31 +37,59 @@ export const Index: React.FC = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <TwitterIcon />
-                <a href="https://twitter.com/sugar2don">
+                <a href="https://twitter.com/_sugardon">
                   <span className="hover:text-indigo-700">
-                    {"https://twitter.com/sugar2don"}
+                    {"https://twitter.com/_sugardon"}
                   </span>
                 </a>
               </li>
             </ul>
-
+            {/* Experience */}
             <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">
               Experience
             </h2>
-            <p className="mb-6 sm:text-lg md:mb-8">
-              This is a section of experience.
-            </p>
+            <p className="mb-6 sm:text-lg md:mb-8">Engineering experience.</p>
             <ul className="mb-6 list-inside list-disc sm:text-lg md:mb-8">
-              <li>Cloud Native</li>
-              <li>Frontend</li>
+              <li>
+                <b>Programing Language:</b> TypeScript, Go, Scala, Python
+              </li>
+              <li>
+                <b>Infrastructure:</b> Kubernets, IaC(AWS CDK, Pulumi), CI/CD
+                (GitHub Actions, ArgoCD, Jenkins, Tekton), VMware vSphere
+              </li>
+              <li>
+                <b>Frontend:</b> React, Next.js, Playwright
+              </li>
             </ul>
-
+            {/* Develop */}
+            <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">
+              Develop
+            </h2>
+            <ul className="mb-6 list-inside list-disc sm:text-lg md:mb-8">
+              <li>
+                <a href="https://github.com/sugardon/sugardonblog/">
+                  <span className="hover:text-indigo-700">
+                    sugardonblog - Next.js based blog
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sugardon/helm-charts/">
+                  <span className="hover:text-indigo-700">helm charts</span>
+                </a>
+              </li>
+            </ul>
+            {/* Interest */}
             <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">
               Interest
             </h2>
             <ul className="mb-6 list-inside list-disc sm:text-lg md:mb-8">
-              <li>Cloud Native</li>
-              <li>Frontend</li>
+              <li>
+                <b>Cloud Native:</b> microservice, service mesh
+              </li>
+              <li>
+                <b>Security:</b> software supply chain security
+              </li>
             </ul>
             {/* end content */}
           </div>
