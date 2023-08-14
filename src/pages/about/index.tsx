@@ -20,7 +20,7 @@ export const Index: React.FC = () => {
               About
             </h1>
             <p className="mb-6 text-center sm:text-lg md:mb-8">
-              sugardon - Spend a fluffy time with technology.
+              sugardon - Spend a fluffy time.
             </p>
             {/* Link */}
             <h2 className="mb-2 text-xl font-semibold sm:text-2xl md:mb-4">
