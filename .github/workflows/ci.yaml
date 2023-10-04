@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # https://docs.github.com/ja/actions/guides/building-and-testing-nodejs#example-caching-dependencies
       - name: setup node
         uses: actions/setup-node@v3
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup node
         uses: actions/setup-node@v3
         with:
