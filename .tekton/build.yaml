@@ -31,7 +31,7 @@ spec:
     - name: image-url
       value: "docker.io/sugardon/sugardonblog"
     - name: buildpack-builder
-      value: "paketobuildpacks/builder:0.3.288-base"
+      value: "paketobuildpacks/builder-jammy-base:0.4.254"
   pipelineSpec:
     workspaces:
       - name: source
