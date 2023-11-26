@@ -69,6 +69,9 @@ spec:
             value: $(params.buildpack-builder)
             # project.toml is not work
             # https://github.com/buildpacks/tekton-integration/issues/33
+          - name: USER_ID
+            # https://github.com/paketo-buildpacks/builder-jammy-base/issues/375
+            value: "1001"
           - name: ENV_VARS
             value:
               - "NODE_ENV=production"
