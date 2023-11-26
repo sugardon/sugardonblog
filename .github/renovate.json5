@@ -1,0 +1,20 @@
+{
+  extends: ["config:base"],
+  schedule: ["every weekend"],
+  dependencyDashboard: true,
+  timezone: "Asia/Tokyo",
+  prHourlyLimit: 0,
+  labels: ["dependencies", "renovate"],
+  rangeStrategy: "bump",
+  regexManagers: [
+    {
+      description: "Update paketobuildpacks/builder-jammy-base",
+      fileMatch: ["README.md", "skaffold.ya?ml$", "(^|/)build\\.ya?ml$"],
+      matchStrings: [
+        'paketobuildpacks\\/builder-jammy-base:(?<currentValue>.*?)[\n"]',
+      ],
+      depNameTemplate: "paketobuildpacks/builder-jammy-base",
+      datasourceTemplate: "docker",
+    },
+  ],
+}
