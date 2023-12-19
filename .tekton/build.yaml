@@ -8,7 +8,7 @@ metadata:
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
-    pipelinesascode.tekton.dev/task: "[git-clone, buildpacks]"
+    pipelinesascode.tekton.dev/task: "[git-clone, buildpacks-phases:0.2]"
     pipelinesascode.tekton.dev/max-keep-runs: "2"
 spec:
   # https://github.com/sugardon-org/tekton-cicd/blob/7e44a44495c1c72bfec6ccdc9e8a4a8e26e921e7/rbac/base/build-bot.yaml
