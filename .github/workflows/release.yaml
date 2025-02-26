@@ -44,7 +44,7 @@ jobs:
             type=sha,format=long
 
       - name: Set up pack
-        uses: buildpacks/github-actions/setup-pack@v5.0.0
+        uses: buildpacks/github-actions/setup-pack@v5
 
       - name: Build image
         env:
