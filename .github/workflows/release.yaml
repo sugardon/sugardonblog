@@ -47,7 +47,9 @@ jobs:
         uses: buildpacks/github-actions/setup-pack@v5.8.8
 
       - name: Build image
+        id: build
         env:
+          REPOSITORY: "sugardon/sugardonblog"
           PLATFORMS: "linux/amd64 linux/arm64"
           TAGS: ${{ steps.meta.outputs.tags }}
           NODE_ENV: production
@@ -57,25 +59,30 @@ jobs:
         run: |
           pack config default-builder paketobuildpacks/builder-jammy-base:0.4.384
           images=""
+          digest_tag=""
           for tag in ${TAGS}; do
             if [ -z "$images" ]; then
               images+="${tag}"
+              digest_tag+="${tag}"
             else
               images+=",${tag}"
             fi
           done
 
           for platform in ${PLATFORMS}; do
-            pack build sugardon/sugardonblog \
+            pack build ${REPOSITORY} \
               --builder=paketobuildpacks/builder-jammy-base:0.4.384 \
               --platform=${platform} \
               --tag=${images} \
               --publish
           done
 
+          OUTPUTS_DIGEST=$(docker images ${REPOSITORY}:${digest_tag} --format "{{.Digest}}")
+          echo "digest=$OUTPUTS_DIGEST" >> $GITHUB_OUTPUT
+
       - name: Sign the images with GitHub OIDC Token
         env:
-          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          DIGEST: ${{ steps.build.outputs.digest }}
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
           images=""
