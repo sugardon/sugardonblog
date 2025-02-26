@@ -58,7 +58,11 @@ jobs:
           pack config default-builder paketobuildpacks/builder-jammy-base:0.4.384
           images=""
           for tag in ${TAGS}; do
-            images+="${tag},"
+            if [ -z "$images" ]; then
+              images+="${tag}"
+            else
+              images+=",${tag}"
+            fi
           done
 
           for platform in ${PLATFORMS}; do
