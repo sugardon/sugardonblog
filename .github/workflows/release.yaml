@@ -50,6 +50,10 @@ jobs:
         env:
           PLATFORMS: "linux/amd64 linux/arm64"
           TAGS: ${{ steps.meta.outputs.tags }}
+          NODE_ENV: production
+          BP_NODE_RUN_SCRIPTS: "lint,build"
+          # For playwright browser restriction
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: true
         run: |
           pack config default-builder paketobuildpacks/builder-jammy-base:0.4.384
           images=""
