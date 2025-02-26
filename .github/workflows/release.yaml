@@ -51,14 +51,14 @@ jobs:
           PLATFORMS: "linux/amd64 linux/arm64"
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
-          pack config default-builder paketobuildpacks/builder-jammy-base:0.4.254
+          pack config default-builder paketobuildpacks/builder-jammy-base:0.4.384
           images=""
           for tag in ${TAGS}; do
             images+="${tag},"
           done
 
           for platform in ${PLATFORMS}; do
-            pack build sugardon/sugardonblog --builder=paketobuildpacks/builder-jammy-base:0.4.254 --platform=${platform} --tag=${images}
+            pack build sugardon/sugardonblog --builder=paketobuildpacks/builder-jammy-base:0.4.384 --platform=${platform} --tag=${images}
           done
 
       - name: Sign the images with GitHub OIDC Token
