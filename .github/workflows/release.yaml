@@ -77,7 +77,7 @@ jobs:
               --publish
           done
 
-          docker images ${REPOSITORY}:${digest_tag} --format "{{.Digest}}"
+          echo $(docker images ${REPOSITORY}:${digest_tag} --format "{{.Digest}}")
           OUTPUTS_DIGEST=$(docker images ${REPOSITORY}:${digest_tag} --format "{{.Digest}}")
           echo "digest=${OUTPUTS_DIGEST}" >> $GITHUB_OUTPUT
 
