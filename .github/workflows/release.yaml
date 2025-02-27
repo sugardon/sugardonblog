@@ -59,11 +59,9 @@ jobs:
         run: |
           pack config default-builder paketobuildpacks/builder-jammy-base:0.4.384
           images=""
-          digest_tag=""
           for tag in ${TAGS}; do
             if [ -z "$images" ]; then
               images+="${tag}"
-              digest_tag+="${tag}"
             else
               images+=",${tag}"
             fi
@@ -74,17 +72,16 @@ jobs:
               --builder=paketobuildpacks/builder-jammy-base:0.4.384 \
               --platform=${platform} \
               --tag=${images} \
-              --publish
+              --publish \
+              --report-output-dir report.toml
           done
-      - name: tmp
-        env:
-          TAGS: ${{ steps.meta.outputs.tags }}
-        run: |
-          docker images
 
-          echo $(docker images ${TAGS[0]} --format "{{.Digest}}")
-          OUTPUTS_DIGEST=$(docker images ${TAGS[0]} --format "{{.Digest}}")
-          echo "digest=${OUTPUTS_DIGEST}" >> $GITHUB_OUTPUT
+          IMAGE_ID=$(cat report.toml | sed -n 's/^.*image-id *= *"\?\([^"]*\)".*$/\1/p')
+          if [ -z "$IMAGE_ID" ]; then
+            echo "Cannot get image-id from report.toml"
+            exit 1
+          fi
+          echo "digest=${IMAGE_ID}" >> $GITHUB_OUTPUT
 
       - name: Sign the images with GitHub OIDC Token
         env:
