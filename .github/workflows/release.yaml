@@ -80,6 +80,8 @@ jobs:
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
+          docker images
+
           echo $(docker images ${TAGS[0]} --format "{{.Digest}}")
           OUTPUTS_DIGEST=$(docker images ${TAGS[0]} --format "{{.Digest}}")
           echo "digest=${OUTPUTS_DIGEST}" >> $GITHUB_OUTPUT
