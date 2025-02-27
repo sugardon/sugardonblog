@@ -73,7 +73,7 @@ jobs:
               --platform=${platform} \
               --tag=${images} \
               --publish \
-              --report-output-dir report.toml
+              --report-output-dir=.
           done
 
           IMAGE_ID=$(cat report.toml | sed -n 's/^.*image-id *= *"\?\([^"]*\)".*$/\1/p')
