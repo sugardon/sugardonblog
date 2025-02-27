@@ -78,11 +78,10 @@ jobs:
           done
       - name: tmp
         env:
-          REPOSITORY: "sugardon/sugardonblog"
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
-          echo $(docker images ${REPOSITORY}:${TAGS[0]} --format "{{.Digest}}")
-          OUTPUTS_DIGEST=$(docker images ${REPOSITORY}:${TAGS[0]} --format "{{.Digest}}")
+          echo $(docker images ${TAGS[0]} --format "{{.Digest}}")
+          OUTPUTS_DIGEST=$(docker images ${TAGS[0]} --format "{{.Digest}}")
           echo "digest=${OUTPUTS_DIGEST}" >> $GITHUB_OUTPUT
 
       - name: Sign the images with GitHub OIDC Token
