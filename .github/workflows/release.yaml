@@ -76,14 +76,12 @@ jobs:
               --report-output-dir=.
           done
 
-          ls -al
-          cat report.toml
-          IMAGE_ID=$(cat report.toml | sed -n 's/^.*image-id *= *"\?\([^"]*\)".*$/\1/p')
-          if [ -z "$IMAGE_ID" ]; then
-            echo "Cannot get image-id from report.toml"
+          DIGEST=$(cat report.toml | sed -n 's/^.*digest *= *"sha256:\([^"]*\)".*$/\1/p')
+          if [ -z "$DIGEST" ]; then
+            echo "Cannot get digest from report.toml"
             exit 1
           fi
-          echo "digest=${IMAGE_ID}" >> $GITHUB_OUTPUT
+          echo "digest=${DIGEST}" >> $GITHUB_OUTPUT
 
       - name: Sign the images with GitHub OIDC Token
         env:
