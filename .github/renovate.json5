@@ -9,7 +9,7 @@
   regexManagers: [
     {
       description: "Update paketobuildpacks/builder-jammy-base",
-      fileMatch: ["README.md", "skaffold.ya?ml$", "(^|/)build\\.ya?ml$"],
+      fileMatch: ["README.md", ".*y[a]?ml$"],
       matchStrings: [
         'paketobuildpacks\\/builder-jammy-base:(?<currentValue>.*?)[\n"]',
       ],
