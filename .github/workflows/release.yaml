@@ -52,12 +52,13 @@ jobs:
           REPOSITORY: "sugardon/sugardonblog"
           PLATFORMS: "linux/amd64 linux/arm64"
           TAGS: ${{ steps.meta.outputs.tags }}
+          BUILDPACK_BUILDER: paketobuildpacks/builder-jammy-base:0.4.384
           NODE_ENV: production
           BP_NODE_RUN_SCRIPTS: "lint,build"
           # For playwright browser restriction
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: true
         run: |
-          pack config default-builder paketobuildpacks/builder-jammy-base:0.4.384
+          pack config default-builder ${BUILDPACK_BUILDER}
           images=""
           for tag in ${TAGS}; do
             if [ -z "$images" ]; then
@@ -69,7 +70,7 @@ jobs:
 
           for platform in ${PLATFORMS}; do
             pack build ${REPOSITORY} \
-              --builder=paketobuildpacks/builder-jammy-base:0.4.384 \
+              --builder=${BUILDPACK_BUILDER} \
               --platform=${platform} \
               --tag=${images} \
               --publish \
