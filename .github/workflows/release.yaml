@@ -76,7 +76,7 @@ jobs:
               --report-output-dir=.
           done
 
-          DIGEST=$(cat report.toml | sed -n 's/^.*digest *= *"sha256:\([^"]*\)".*$/\1/p')
+          DIGEST=$(cat report.toml | sed -n 's/^.*digest *= *"\?\([^"]*\)".*$/\1/p')
           if [ -z "$DIGEST" ]; then
             echo "Cannot get digest from report.toml"
             exit 1
@@ -92,5 +92,4 @@ jobs:
           for tag in ${TAGS}; do
             images+="${tag}@${DIGEST} "
           done
-          #cosign sign --yes ${images}
-          cosign sign --yes ${DIGEST}
+          cosign sign --yes ${images}
