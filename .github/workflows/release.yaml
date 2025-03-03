@@ -76,6 +76,8 @@ jobs:
               --report-output-dir=.
           done
 
+          ls -al
+          cat report.toml
           IMAGE_ID=$(cat report.toml | sed -n 's/^.*image-id *= *"\?\([^"]*\)".*$/\1/p')
           if [ -z "$IMAGE_ID" ]; then
             echo "Cannot get image-id from report.toml"
