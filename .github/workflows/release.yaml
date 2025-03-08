@@ -50,7 +50,7 @@ jobs:
           REPOSITORY: "sugardon/sugardonblog"
           PLATFORMS: "linux/amd64 linux/arm64"
           TAGS: ${{ steps.meta.outputs.tags }}
-          BUILDPACK_BUILDER: paketobuildpacks/builder-jammy-base:0.4.386
+          BUILDPACK_BUILDER: paketobuildpacks/builder-jammy-base:0.4.388
           NODE_ENV: production
           BP_NODE_RUN_SCRIPTS: "lint,build"
           # For playwright browser restriction
