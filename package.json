@@ -24,7 +24,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.51.0",
+    "@playwright/test": "^1.51.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.3.1",
     "@types/jest": "^29.5.14",
