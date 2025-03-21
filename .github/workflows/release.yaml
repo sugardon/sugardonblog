@@ -51,7 +51,7 @@ jobs:
           #PLATFORMS: "linux/amd64 linux/arm64"
           PLATFORMS: "linux/amd64"
           TAGS: ${{ steps.meta.outputs.tags }}
-          BUILDPACK_BUILDER: paketobuildpacks/builder-jammy-base:0.4.388
+          BUILDPACK_BUILDER: paketobuildpacks/builder-jammy-base:0.4.394
           NODE_ENV: production
           BP_NODE_RUN_SCRIPTS: "lint,build"
           # For playwright browser restriction
