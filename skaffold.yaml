@@ -8,7 +8,7 @@ build:
     - image: sugardonblog
       context: .
       buildpacks:
-        builder: "paketobuildpacks/builder-jammy-base:0.4.388"
+        builder: "paketobuildpacks/builder-jammy-base:0.4.394"
 deploy:
   helm:
     releases:
